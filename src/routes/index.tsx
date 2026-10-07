@@ -582,8 +582,8 @@ function CommandPalette() {
     const next = !document.documentElement.classList.contains("dark");
     document.documentElement.classList.toggle("dark", next);
     localStorage.setItem("theme", next ? "dark" : "light");
+    window.dispatchEvent(new Event("theme-change"));
     setOpen(false);
-    window.location.reload();
   };
 
   return (
