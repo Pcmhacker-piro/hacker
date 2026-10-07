@@ -49,7 +49,7 @@ const experiences = [
     date: "Apr 2026 – Present",
     place: "India · Remote",
     mark: "G",
-    logo: "https://logo.clearbit.com/google.com",
+    logo: "https://icons.duckduckgo.com/ip3/google.com.ico",
     metrics: [],
     points: [],
     tags: ["Public Speaking", "Community Building"],
@@ -60,7 +60,7 @@ const experiences = [
     date: "Apr 2026 – Sep 2026",
     place: "India · Remote",
     mark: "GS",
-    logo: "https://logo.clearbit.com/gssoc.girlscript.tech",
+    logo: "https://icons.duckduckgo.com/ip3/gssoc.girlscript.tech.ico",
     metrics: [
       { v: "#28", l: "of 43,000+" },
       { v: "600", l: "PRs merged" },
@@ -78,7 +78,7 @@ const experiences = [
     date: "Jul 2026 – Aug 2026",
     place: "Remote",
     mark: "IA",
-    logo: "https://logo.clearbit.com/inamigosfoundation.org",
+    logo: "https://icons.duckduckgo.com/ip3/inamigosfoundation.org.ico",
     metrics: [
       { v: "6", l: "UX flows" },
       { v: "4", l: "Sections shipped" },
@@ -95,7 +95,7 @@ const experiences = [
     date: "Jun 2026 – Aug 2026",
     place: "India · Remote",
     mark: "EC",
-    logo: "https://logo.clearbit.com/elitecoders.co",
+    logo: "https://icons.duckduckgo.com/ip3/elitecoders.co.ico",
     metrics: [
       { v: "#286", l: "Worldwide rank" },
       { v: "620", l: "Leaderboard score" },
