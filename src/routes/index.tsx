@@ -1,10 +1,10 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import type { MouseEvent as RMouseEvent } from "react";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { HeroBanner } from "@/components/HeroBanner";
 import { Reveal } from "@/components/Reveal";
-import { Github, Linkedin, Twitter, Mail, ChevronDown } from "lucide-react";
+import { Github, Linkedin, Twitter, Mail, ChevronDown, ArrowUpRight, Pin } from "lucide-react";
 import verdiqyImg from "@/assets/verdiqy.jpg";
 import novixImg from "@/assets/novix.jpg";
 import inamigosLogo from "@/assets/inamigos-logo.png.asset.json";
@@ -116,6 +116,8 @@ const projects = [
     img: verdiqyImg,
     tagline: "Unified competitive programming training platform",
     stack: ["React 19", "TypeScript", "TanStack Start", "PostgreSQL", "Gemini API"],
+    live: "#",
+    code: "https://github.com/Pcmhacker-piro",
     points: [
       "Sheet builder for custom practice sets from a 12,000+ problem bank, plus Codeforces profile comparison.",
       "Contest tracker across Codeforces, LeetCode and CodeChef with an analytics dashboard.",
@@ -127,6 +129,8 @@ const projects = [
     img: novixImg,
     tagline: "Open-source React component library",
     stack: ["TypeScript", "Tailwind CSS v4", "Radix UI", "Motion"],
+    live: "#",
+    code: "https://github.com/Pcmhacker-piro",
     points: [
       "Published @novix-ui/react with 500+ accessible components in strict TypeScript.",
       "Token-driven OKLCH theming with instant dark mode and zero hardcoded colors.",
