@@ -4,7 +4,17 @@ import type { MouseEvent as RMouseEvent } from "react";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { HeroBanner } from "@/components/HeroBanner";
 import { Reveal } from "@/components/Reveal";
-import { Github, Linkedin, Twitter, Mail, ChevronDown, ArrowUpRight, Pin } from "lucide-react";
+import { Github, Linkedin, Twitter, Mail, ChevronDown, ArrowUpRight, Pin, Search, Moon, Sun, Copy } from "lucide-react";
+import {
+  CommandDialog,
+  CommandEmpty,
+  CommandGroup,
+  CommandInput,
+  CommandItem,
+  CommandList,
+  CommandSeparator,
+  CommandShortcut,
+} from "@/components/ui/command";
 import verdiqyImg from "@/assets/verdiqy.jpg";
 import novixImg from "@/assets/novix.jpg";
 import inamigosLogo from "@/assets/inamigos-logo.png.asset.json";
@@ -195,13 +205,14 @@ function Index() {
   return (
     <div className="min-h-screen bg-background text-foreground">
       <SideIndex />
-      <div className="fixed right-5 top-5 z-30 lg:hidden">
-        <ThemeToggle />
-      </div>
 
       <main className="mx-auto max-w-3xl px-6">
         <section className="animate-float-in pt-8 pb-16">
           <HeroBanner />
+          <div className="mt-4 flex items-center justify-end gap-2">
+            <CommandPalette />
+            <ThemeToggle />
+          </div>
           <div className="mb-8 flex items-center justify-between text-xs text-muted-foreground">
             <span className="flex items-center gap-2">
               <span className="h-2 w-2 animate-pulse rounded-full bg-primary" /> Open to internships
