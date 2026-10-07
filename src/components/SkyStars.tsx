@@ -76,7 +76,7 @@ export default function SkyStars() {
       context.fillStyle = styles.getPropertyValue(token).trim();
       context.fillRect(0, 0, 1, 1);
       const pixel = context.getImageData(0, 0, 1, 1).data;
-      return new Color().setRGB(pixel[0] / 255, pixel[1] / 255, pixel[2] / 255, SRGBColorSpace);
+      return new Color().setRGB((pixel[0] ?? 255) / 255, (pixel[1] ?? 255) / 255, (pixel[2] ?? 255) / 255, SRGBColorSpace);
     };
     setPalette({ core: resolve("--sky-star-core"), trail: resolve("--sky-star-trail"), gold: resolve("--sky-star-gold") });
   }, []);
