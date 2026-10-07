@@ -519,7 +519,7 @@ function SideIndex() {
   }, []);
 
   return (
-    <aside className="fixed right-8 top-1/2 z-30 hidden -translate-y-1/2 lg:block" style={{ perspective: "600px" }}>
+    <aside className="fixed left-[calc(50%+24rem)] top-1/2 z-30 hidden -translate-y-1/2 lg:block" style={{ perspective: "600px" }}>
       <div className="flex flex-col items-end gap-1">
         <div className="mb-3 font-mono text-[10px] uppercase tracking-[0.25em] text-muted-foreground/60">Index</div>
         {indexLinks.map((link) => {
