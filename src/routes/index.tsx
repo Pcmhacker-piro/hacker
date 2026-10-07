@@ -422,3 +422,79 @@ function ExperienceItem({ e, isLast }: { e: Experience; isLast: boolean }) {
     </article>
   );
 }
+
+function ProjectCard({ p }: { p: (typeof projects)[number] }) {
+  const ref = useRef<HTMLElement>(null);
+  const onMove = (ev: RMouseEvent<HTMLElement>) => {
+    const el = ref.current;
+    if (!el || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const r = el.getBoundingClientRect();
+    const x = (ev.clientX - r.left) / r.width;
+    const y = (ev.clientY - r.top) / r.height;
+    el.style.setProperty("--rx", `${(0.5 - y) * 10}deg`);
+    el.style.setProperty("--ry", `${(x - 0.5) * 12}deg`);
+    el.style.setProperty("--mx", `${x * 100}%`);
+    el.style.setProperty("--my", `${y * 100}%`);
+  };
+  const onLeave = () => {
+    const el = ref.current;
+    if (!el) return;
+    el.style.setProperty("--rx", "0deg");
+    el.style.setProperty("--ry", "0deg");
+  };
+  return (
+    <div className="h-full [perspective:1200px]">
+      <article
+        ref={ref}
+        onMouseMove={onMove}
+        onMouseLeave={onLeave}
+        style={{ transform: "rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg))", transformStyle: "preserve-3d" }}
+        className="group relative flex h-full flex-col rounded-2xl border border-border bg-card p-3 transition-[transform,box-shadow,border-color] duration-300 ease-out hover:border-primary/40 hover:shadow-2xl"
+      >
+        <div
+          className="pointer-events-none absolute inset-0 rounded-2xl opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+          style={{ background: "radial-gradient(420px circle at var(--mx,50%) var(--my,50%), color-mix(in oklab, var(--primary) 14%, transparent), transparent 60%)" }}
+        />
+        <div className="relative rounded-xl border border-border bg-muted/50 px-6 pt-10 shadow-inner" style={{ transform: "translateZ(40px)" }}>
+          <span className="absolute right-3 top-3 grid h-8 w-8 place-items-center rounded-md border border-border bg-background text-muted-foreground shadow-sm">
+            <Pin className="h-4 w-4" />
+          </span>
+          <div className="overflow-hidden rounded-t-lg border border-b-0 border-border shadow-lg">
+            <img src={p.img} alt={`${p.name} preview`} width={1280} height={720} loading="lazy" className="aspect-video w-full object-cover object-top transition-transform duration-700 group-hover:scale-[1.04]" />
+          </div>
+        </div>
+        <div className="relative flex flex-1 flex-col px-2 pb-2 pt-5" style={{ transform: "translateZ(24px)" }}>
+          <div className="flex items-center justify-between gap-3">
+            <h3 className="text-lg font-semibold tracking-tight">{p.name}</h3>
+            <span className="inline-flex items-center gap-1.5 rounded-full border border-border bg-background px-3 py-1 text-xs font-medium">
+              <span className="relative flex h-2 w-2">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-60" />
+                <span className="relative inline-flex h-2 w-2 rounded-full bg-primary" />
+              </span>
+              Live
+            </span>
+          </div>
+          <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{p.tagline}</p>
+          <ul className="mt-3 flex-1 space-y-1.5 text-[13px] leading-snug text-muted-foreground">
+            {p.points.map((pt) => (
+              <li key={pt}>• {pt}</li>
+            ))}
+          </ul>
+          <div className="mt-4 flex flex-wrap gap-1.5">
+            {p.stack.map((s) => (
+              <Tag key={s}>{s}</Tag>
+            ))}
+          </div>
+          <div className="mt-5 flex items-center gap-2">
+            <a href={p.live} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1.5 rounded-md border border-foreground bg-foreground px-3.5 py-2 text-xs font-medium text-background transition-transform hover:-translate-y-0.5">
+              View Live <ArrowUpRight className="h-3.5 w-3.5" />
+            </a>
+            <a href={p.code} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1.5 rounded-md border border-border bg-background px-3.5 py-2 text-xs font-medium transition-colors hover:border-foreground">
+              <Github className="h-3.5 w-3.5" /> Source
+            </a>
+          </div>
+        </div>
+      </article>
+    </div>
+  );
+}
