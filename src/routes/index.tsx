@@ -591,10 +591,10 @@ function CommandPalette() {
       <button
         onClick={() => setOpen(true)}
         aria-label="Open command palette"
-        className="flex h-8 items-center gap-1 rounded-md border border-border bg-card px-2 text-xs text-muted-foreground shadow-sm transition-all hover:-translate-y-0.5 hover:border-primary/50 hover:text-foreground"
+        className="flex h-7 items-center gap-1 rounded-md border border-border bg-card px-1.5 text-[11px] text-muted-foreground shadow-sm transition-all hover:bg-accent hover:text-foreground hover:border-primary/60 hover:shadow-md"
       >
-        <Command className="h-3.5 w-3.5" />
-        <span className="font-mono text-[11px]">K</span>
+        <Command className="h-3 w-3" />
+        <span className="font-mono text-[10px]">K</span>
       </button>
       <CommandDialog open={open} onOpenChange={setOpen}>
         <CommandInput placeholder="Search for a command to run..." />
