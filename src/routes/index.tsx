@@ -7,6 +7,7 @@ import { Github, Linkedin, Twitter, Mail, ChevronDown } from "lucide-react";
 import verdiqyImg from "@/assets/verdiqy.jpg";
 import novixImg from "@/assets/novix.jpg";
 import inamigosLogo from "@/assets/inamigos-logo.png.asset.json";
+import eliteCodersLogo from "@/assets/elite-coders-logo.png.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -96,7 +97,7 @@ const experiences = [
     date: "Jun 2026 – Aug 2026",
     place: "India · Remote",
     mark: "EC",
-    logo: "https://icons.duckduckgo.com/ip3/elitecoders.co.ico",
+    logo: eliteCodersLogo.url,
     metrics: [
       { v: "#286", l: "Worldwide rank" },
       { v: "620", l: "Leaderboard score" },
