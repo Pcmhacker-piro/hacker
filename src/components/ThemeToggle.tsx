@@ -8,6 +8,9 @@ export function ThemeToggle() {
     const isDark = saved ? saved === "dark" : true;
     document.documentElement.classList.toggle("dark", isDark);
     setDark(isDark);
+    const sync = () => setDark(document.documentElement.classList.contains("dark"));
+    window.addEventListener("theme-change", sync);
+    return () => window.removeEventListener("theme-change", sync);
   }, []);
 
   const toggle = (e: React.MouseEvent<HTMLButtonElement>) => {

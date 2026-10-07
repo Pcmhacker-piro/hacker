@@ -4,7 +4,17 @@ import type { MouseEvent as RMouseEvent } from "react";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { HeroBanner } from "@/components/HeroBanner";
 import { Reveal } from "@/components/Reveal";
-import { Github, Linkedin, Twitter, Mail, ChevronDown, ArrowUpRight, Pin } from "lucide-react";
+import { Github, Linkedin, Twitter, Mail, ChevronDown, ArrowUpRight, Pin, Search, Moon, Sun, Copy } from "lucide-react";
+import {
+  CommandDialog,
+  CommandEmpty,
+  CommandGroup,
+  CommandInput,
+  CommandItem,
+  CommandList,
+  CommandSeparator,
+  CommandShortcut,
+} from "@/components/ui/command";
 import verdiqyImg from "@/assets/verdiqy.jpg";
 import novixImg from "@/assets/novix.jpg";
 import inamigosLogo from "@/assets/inamigos-logo.png.asset.json";
@@ -195,13 +205,14 @@ function Index() {
   return (
     <div className="min-h-screen bg-background text-foreground">
       <SideIndex />
-      <div className="fixed right-5 top-5 z-30 lg:hidden">
-        <ThemeToggle />
-      </div>
 
       <main className="mx-auto max-w-3xl px-6">
         <section className="animate-float-in pt-8 pb-16">
           <HeroBanner />
+          <div className="mt-4 flex items-center justify-end gap-2">
+            <CommandPalette />
+            <ThemeToggle />
+          </div>
           <div className="mb-8 flex items-center justify-between text-xs text-muted-foreground">
             <span className="flex items-center gap-2">
               <span className="h-2 w-2 animate-pulse rounded-full bg-primary" /> Open to internships
@@ -543,10 +554,88 @@ function SideIndex() {
             </a>
           );
         })}
-        <div className="mt-4">
-          <ThemeToggle />
-        </div>
       </div>
     </aside>
+  );
+}
+
+function CommandPalette() {
+  const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "k") {
+        e.preventDefault();
+        setOpen((o) => !o);
+      }
+    };
+    document.addEventListener("keydown", onKey);
+    return () => document.removeEventListener("keydown", onKey);
+  }, []);
+
+  const go = (id: string) => {
+    setOpen(false);
+    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  const toggleTheme = () => {
+    const next = !document.documentElement.classList.contains("dark");
+    document.documentElement.classList.toggle("dark", next);
+    localStorage.setItem("theme", next ? "dark" : "light");
+    window.dispatchEvent(new Event("theme-change"));
+    setOpen(false);
+  };
+
+  return (
+    <>
+      <button
+        onClick={() => setOpen(true)}
+        aria-label="Open command palette"
+        className="flex h-9 items-center gap-1.5 rounded-full border border-border px-3 text-xs text-muted-foreground transition-all hover:-translate-y-0.5 hover:border-primary/50 hover:bg-accent hover:text-foreground"
+      >
+        <Search className="h-3.5 w-3.5" />
+        <span className="font-mono">⌘K</span>
+      </button>
+      <CommandDialog open={open} onOpenChange={setOpen}>
+        <CommandInput placeholder="Search for a command to run..." />
+        <CommandList>
+          <CommandEmpty>No results found.</CommandEmpty>
+          <CommandGroup heading="Sections">
+            {indexLinks.map((link) => (
+              <CommandItem key={link.id} onSelect={() => go(link.id)}>
+                <ArrowUpRight className="h-4 w-4" />
+                {link.label}
+              </CommandItem>
+            ))}
+          </CommandGroup>
+          <CommandSeparator />
+          <CommandGroup heading="Actions">
+            <CommandItem onSelect={() => { setOpen(false); window.location.href = "mailto:pcmeena511@gmail.com"; }}>
+              <Mail className="h-4 w-4" />
+              Send an email
+            </CommandItem>
+            <CommandItem onSelect={() => { navigator.clipboard?.writeText("pcmeena511@gmail.com"); setOpen(false); }}>
+              <Copy className="h-4 w-4" />
+              Copy email address
+            </CommandItem>
+            <CommandItem onSelect={toggleTheme}>
+              <Sun className="h-4 w-4 dark:hidden" />
+              <Moon className="hidden h-4 w-4 dark:block" />
+              Toggle theme
+            </CommandItem>
+          </CommandGroup>
+          <CommandSeparator />
+          <CommandGroup heading="Socials">
+            {socials.map((s) => (
+              <CommandItem key={s.label} onSelect={() => { window.open(s.href, "_blank"); setOpen(false); }}>
+                <s.Icon className="h-4 w-4" />
+                {s.label}
+                <CommandShortcut>↗</CommandShortcut>
+              </CommandItem>
+            ))}
+          </CommandGroup>
+        </CommandList>
+      </CommandDialog>
+    </>
   );
 }
