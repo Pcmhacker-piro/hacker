@@ -78,14 +78,13 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: "Prakash Meena — Portfolio" },
+      { name: "description", content: "Prakash Meena's engineering portfolio and open-source work." },
+      { name: "author", content: "Prakash Meena" },
+      { property: "og:title", content: "Prakash Meena — Portfolio" },
+      { property: "og:description", content: "Engineering projects and open-source contributions by Prakash Meena." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:site", content: "@Lovable" },
     ],
     links: [
       {
