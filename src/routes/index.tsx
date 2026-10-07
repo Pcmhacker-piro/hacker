@@ -489,3 +489,64 @@ function ProjectCard({ p }: { p: (typeof projects)[number] }) {
     </div>
   );
 }
+
+const indexLinks = [
+  { id: "experience", label: "Experience" },
+  { id: "projects", label: "Projects" },
+  { id: "open-source", label: "Open Source" },
+  { id: "skills", label: "Skills" },
+  { id: "education", label: "Education" },
+  { id: "contact", label: "Contact" },
+];
+
+function SideIndex() {
+  const [active, setActive] = useState<string>("");
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) setActive(entry.target.id);
+        }
+      },
+      { rootMargin: "-30% 0px -60% 0px" }
+    );
+    for (const link of indexLinks) {
+      const el = document.getElementById(link.id);
+      if (el) observer.observe(el);
+    }
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <aside className="fixed right-8 top-1/2 z-30 hidden -translate-y-1/2 lg:block" style={{ perspective: "600px" }}>
+      <div className="flex flex-col items-end gap-1">
+        <div className="mb-3 font-mono text-[10px] uppercase tracking-[0.25em] text-muted-foreground/60">Index</div>
+        {indexLinks.map((link) => {
+          const isActive = active === link.id;
+          return (
+            <a
+              key={link.id}
+              href={`#${link.id}`}
+              className={`group relative block rounded-md px-3 py-1.5 text-sm transition-all duration-300 ease-out motion-safe:hover:-translate-y-0.5 motion-safe:hover:[transform:rotateY(-8deg)_translateX(-4px)] ${
+                isActive
+                  ? "text-foreground font-medium"
+                  : "text-muted-foreground/70 hover:text-foreground"
+              }`}
+            >
+              <span
+                className={`absolute left-0 top-1/2 h-4 w-0.5 -translate-y-1/2 rounded-full bg-primary transition-all duration-300 ${
+                  isActive ? "opacity-100 scale-y-100" : "opacity-0 scale-y-0"
+                }`}
+              />
+              {link.label}
+            </a>
+          );
+        })}
+        <div className="mt-4">
+          <ThemeToggle />
+        </div>
+      </div>
+    </aside>
+  );
+}
