@@ -352,12 +352,27 @@ type Experience = (typeof experiences)[number];
 
 function ExperienceItem({ e, isLast }: { e: Experience; isLast: boolean }) {
   const [open, setOpen] = useState(false);
+  const [logoFailed, setLogoFailed] = useState(false);
   const hasDetails = e.metrics.length > 0 || e.points.length > 0;
 
   return (
     <article className="group relative grid grid-cols-[40px_minmax(0,1fr)] gap-4 pb-8 sm:grid-cols-[44px_minmax(0,1fr)] sm:gap-5" aria-label={`${e.role} at ${e.org}`}>
       <div className="relative">
-        <div aria-hidden="true" className="relative z-10 flex h-10 w-10 items-center justify-center rounded-lg border border-border bg-muted font-mono text-sm font-semibold transition-colors duration-300 group-hover:bg-accent sm:h-11 sm:w-11">{e.mark}</div>
+        <div className="relative z-10 flex h-10 w-10 items-center justify-center overflow-hidden rounded-lg border border-border bg-card font-mono text-sm font-semibold transition-colors duration-300 group-hover:bg-accent sm:h-11 sm:w-11">
+          {logoFailed ? (
+            <span aria-hidden="true">{e.mark}</span>
+          ) : (
+            <img
+              src={e.logo}
+              alt={`${e.org} logo`}
+              width={44}
+              height={44}
+              loading="lazy"
+              onError={() => setLogoFailed(true)}
+              className="h-full w-full object-contain p-1.5"
+            />
+          )}
+        </div>
         {!isLast && <div aria-hidden="true" className="absolute bottom-0 left-1/2 top-12 w-px bg-border" />}
       </div>
       <div className="min-w-0 border-b border-border pb-8">
