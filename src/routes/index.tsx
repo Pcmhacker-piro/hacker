@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { HeroBanner } from "@/components/HeroBanner";
 import { Reveal } from "@/components/Reveal";
-import { Github, Linkedin, Twitter, Mail } from "lucide-react";
+import { Github, Linkedin, Twitter, Mail, ChevronDown } from "lucide-react";
 import verdiqyImg from "@/assets/verdiqy.jpg";
 import novixImg from "@/assets/novix.jpg";
 
@@ -341,5 +341,76 @@ function Index() {
         © 2026 Prakash Meena
       </footer>
     </div>
+  );
+}
+
+type Experience = (typeof experiences)[number];
+
+function ExperienceItem({ e, isLast }: { e: Experience; isLast: boolean }) {
+  const [open, setOpen] = useState(false);
+  const hasDetails = e.metrics.length > 0 || e.points.length > 0;
+
+  return (
+    <article className="group relative grid grid-cols-[40px_minmax(0,1fr)] gap-4 pb-8 sm:grid-cols-[44px_minmax(0,1fr)] sm:gap-5" aria-label={`${e.role} at ${e.org}`}>
+      <div className="relative">
+        <div aria-hidden="true" className="relative z-10 flex h-10 w-10 items-center justify-center rounded-lg border border-border bg-muted font-mono text-sm font-semibold transition-colors duration-300 group-hover:bg-accent sm:h-11 sm:w-11">{e.mark}</div>
+        {!isLast && <div aria-hidden="true" className="absolute bottom-0 left-1/2 top-12 w-px bg-border" />}
+      </div>
+      <div className="min-w-0 border-b border-border pb-8">
+        <div className="flex flex-col items-start justify-between gap-2 sm:flex-row">
+          <div>
+            <h3 className="text-sm font-semibold sm:text-base">{e.role}</h3>
+            <p className="mt-1 text-sm text-muted-foreground">{e.org} · Internship</p>
+          </div>
+          <div className="shrink-0 text-xs leading-relaxed text-muted-foreground sm:text-right">
+            <div>{e.date}</div>
+            <div>{e.place}</div>
+          </div>
+        </div>
+
+        <div
+          className={`grid transition-all duration-500 ease-in-out ${open ? "mt-0 grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"}`}
+          aria-hidden={!open}
+        >
+          <div className="overflow-hidden">
+            {e.metrics.length > 0 && (
+              <div className="mt-5 flex flex-wrap gap-6">
+                {e.metrics.map((m) => (
+                  <div key={m.l}>
+                    <div className="text-xl font-semibold text-primary">{m.v}</div>
+                    <div className="text-xs text-muted-foreground">{m.l}</div>
+                  </div>
+                ))}
+              </div>
+            )}
+            {e.points.length > 0 && (
+              <ul className="mt-5 space-y-2 text-sm leading-relaxed text-muted-foreground">
+                {e.points.map((p) => (
+                  <li key={p}>• {p}</li>
+                ))}
+              </ul>
+            )}
+          </div>
+        </div>
+
+        <div className="mt-5 flex flex-wrap items-center gap-2">
+          {e.tags.map((t) => (
+            <Tag key={t}>{t}</Tag>
+          ))}
+        </div>
+
+        {hasDetails && (
+          <button
+            type="button"
+            onClick={() => setOpen((v) => !v)}
+            aria-expanded={open}
+            className="mt-4 inline-flex items-center gap-1.5 rounded-md text-xs font-medium text-muted-foreground transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+          >
+            {open ? "Show less" : "Show more"}
+            <ChevronDown className={`h-3.5 w-3.5 transition-transform duration-300 ${open ? "rotate-180" : ""}`} />
+          </button>
+        )}
+      </div>
+    </article>
   );
 }
