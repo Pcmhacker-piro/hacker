@@ -4,7 +4,7 @@ import type { MouseEvent as RMouseEvent } from "react";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { HeroBanner } from "@/components/HeroBanner";
 import { Reveal } from "@/components/Reveal";
-import { Github, Linkedin, Twitter, Mail, ChevronDown, ArrowUpRight, Pin, Search, Moon, Sun, Copy } from "lucide-react";
+import { Github, Linkedin, Twitter, Mail, ChevronDown, ArrowUpRight, Pin, Command, Moon, Sun, Copy } from "lucide-react";
 import {
   CommandDialog,
   CommandEmpty,
