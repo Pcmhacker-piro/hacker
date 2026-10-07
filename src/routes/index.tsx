@@ -194,18 +194,10 @@ function Tag({ children }: { children: string }) {
 function Index() {
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <header className="sticky top-0 z-20 border-b border-border bg-background/80 backdrop-blur">
-        <div className="mx-auto flex max-w-3xl items-center justify-between px-6 py-3 text-sm">
-          <span className="font-mono font-medium">pcmeena</span>
-          <nav className="hidden gap-5 sm:flex text-muted-foreground">
-            <a href="#experience" className="hover:text-foreground">Experience</a>
-            <a href="#projects" className="hover:text-foreground">Projects</a>
-            <a href="#skills" className="hover:text-foreground">Skills</a>
-            <a href="#contact" className="hover:text-foreground">Contact</a>
-          </nav>
-          <ThemeToggle />
-        </div>
-      </header>
+      <SideIndex />
+      <div className="fixed right-5 top-5 z-30 lg:hidden">
+        <ThemeToggle />
+      </div>
 
       <main className="mx-auto max-w-3xl px-6">
         <section className="animate-float-in pt-8 pb-16">
@@ -495,5 +487,66 @@ function ProjectCard({ p }: { p: (typeof projects)[number] }) {
         </div>
       </article>
     </div>
+  );
+}
+
+const indexLinks = [
+  { id: "experience", label: "Experience" },
+  { id: "projects", label: "Projects" },
+  { id: "open-source", label: "Open Source" },
+  { id: "skills", label: "Skills" },
+  { id: "education", label: "Education" },
+  { id: "contact", label: "Contact" },
+];
+
+function SideIndex() {
+  const [active, setActive] = useState<string>("");
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) setActive(entry.target.id);
+        }
+      },
+      { rootMargin: "-30% 0px -60% 0px" }
+    );
+    for (const link of indexLinks) {
+      const el = document.getElementById(link.id);
+      if (el) observer.observe(el);
+    }
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <aside className="fixed right-8 top-1/2 z-30 hidden -translate-y-1/2 lg:block" style={{ perspective: "600px" }}>
+      <div className="flex flex-col items-end gap-1">
+        <div className="mb-3 font-mono text-[10px] uppercase tracking-[0.25em] text-muted-foreground/60">Index</div>
+        {indexLinks.map((link) => {
+          const isActive = active === link.id;
+          return (
+            <a
+              key={link.id}
+              href={`#${link.id}`}
+              className={`group relative block rounded-md px-3 py-1.5 text-sm transition-all duration-300 ease-out motion-safe:hover:-translate-y-0.5 motion-safe:hover:[transform:rotateY(-8deg)_translateX(-4px)] ${
+                isActive
+                  ? "text-foreground font-medium"
+                  : "text-muted-foreground/70 hover:text-foreground"
+              }`}
+            >
+              <span
+                className={`absolute left-0 top-1/2 h-4 w-0.5 -translate-y-1/2 rounded-full bg-primary transition-all duration-300 ${
+                  isActive ? "opacity-100 scale-y-100" : "opacity-0 scale-y-0"
+                }`}
+              />
+              {link.label}
+            </a>
+          );
+        })}
+        <div className="mt-4">
+          <ThemeToggle />
+        </div>
+      </div>
+    </aside>
   );
 }
