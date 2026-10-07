@@ -248,46 +248,7 @@ function Index() {
           <div>
             {experiences.map((e, i) => (
               <Reveal key={e.org} delay={i * 100}>
-              <article className="group relative grid grid-cols-[40px_minmax(0,1fr)] gap-4 pb-8 sm:grid-cols-[44px_minmax(0,1fr)] sm:gap-5" aria-label={`${e.role} at ${e.org}`}>
-                <div className="relative">
-                  <div aria-hidden="true" className="relative z-10 flex h-10 w-10 items-center justify-center rounded-lg border border-border bg-muted font-mono text-sm font-semibold transition-colors duration-300 group-hover:bg-accent sm:h-11 sm:w-11">{e.mark}</div>
-                  {i < experiences.length - 1 && <div aria-hidden="true" className="absolute bottom-0 left-1/2 top-12 w-px bg-border" />}
-                </div>
-                <div className="min-w-0 border-b border-border pb-8">
-                <div className="flex flex-col items-start justify-between gap-2 sm:flex-row">
-                  <div>
-                    <h3 className="text-sm font-semibold sm:text-base">{e.role}</h3>
-                    <p className="mt-1 text-sm text-muted-foreground">{e.org} · Internship</p>
-                  </div>
-                  <div className="shrink-0 text-xs leading-relaxed text-muted-foreground sm:text-right">
-                    <div>{e.date}</div>
-                    <div>{e.place}</div>
-                  </div>
-                </div>
-                {e.metrics.length > 0 && (
-                <div className="mt-5 flex flex-wrap gap-6">
-                  {e.metrics.map((m) => (
-                    <div key={m.l}>
-                      <div className="text-xl font-semibold text-primary">{m.v}</div>
-                      <div className="text-xs text-muted-foreground">{m.l}</div>
-                    </div>
-                  ))}
-                </div>
-                )}
-                {e.points.length > 0 && (
-                <ul className="mt-5 space-y-2 text-sm leading-relaxed text-muted-foreground">
-                  {e.points.map((p) => (
-                    <li key={p}>• {p}</li>
-                  ))}
-                </ul>
-                )}
-                <div className="mt-5 flex flex-wrap gap-2">
-                  {e.tags.map((t) => (
-                    <Tag key={t}>{t}</Tag>
-                  ))}
-                </div>
-                </div>
-              </article>
+                <ExperienceItem e={e} isLast={i === experiences.length - 1} />
               </Reveal>
             ))}
           </div>
