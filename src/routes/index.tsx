@@ -280,13 +280,20 @@ function Index() {
           <SectionTitle id="open-source">Open source contributions</SectionTitle>
           <div className="divide-y divide-border rounded-2xl border border-border bg-card">
             {contributions.map((c) => (
-              <div key={c.pr} className="flex gap-4 p-4 text-sm">
-                <span className="shrink-0 font-mono text-primary">{c.pr}</span>
+              <a
+                key={c.pr}
+                href={`https://github.com/${c.repo}/pull/${c.pr.replace("#", "")}`}
+                target="_blank"
+                rel="noreferrer"
+                className="group flex gap-4 p-4 text-sm transition-colors hover:bg-accent/50"
+              >
+                <span className="shrink-0 font-mono text-primary group-hover:underline">{c.pr}</span>
                 <div>
                   <div className="font-mono text-xs text-muted-foreground">{c.repo}</div>
                   <div className="mt-1">{c.text}</div>
                 </div>
-              </div>
+                <ArrowUpRight className="ml-auto h-4 w-4 shrink-0 self-center text-muted-foreground transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-primary" />
+              </a>
             ))}
           </div>
         </section>
@@ -483,9 +490,6 @@ function ProjectCard({ p }: { p: (typeof projects)[number] }) {
           <div className="mt-3 flex items-center gap-2">
             <a href={p.live} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1.5 rounded-md border border-foreground bg-foreground px-3 py-1.5 text-xs font-medium text-background transition-transform hover:-translate-y-0.5">
               View Live <ArrowUpRight className="h-3.5 w-3.5" />
-            </a>
-            <a href={p.code} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1.5 rounded-md border border-border bg-background px-3 py-1.5 text-xs font-medium transition-colors hover:border-foreground">
-              <Github className="h-3.5 w-3.5" /> Source
             </a>
           </div>
         </div>
