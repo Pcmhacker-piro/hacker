@@ -194,18 +194,10 @@ function Tag({ children }: { children: string }) {
 function Index() {
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <header className="sticky top-0 z-20 border-b border-border bg-background/80 backdrop-blur">
-        <div className="mx-auto flex max-w-3xl items-center justify-between px-6 py-3 text-sm">
-          <span className="font-mono font-medium">pcmeena</span>
-          <nav className="hidden gap-5 sm:flex text-muted-foreground">
-            <a href="#experience" className="hover:text-foreground">Experience</a>
-            <a href="#projects" className="hover:text-foreground">Projects</a>
-            <a href="#skills" className="hover:text-foreground">Skills</a>
-            <a href="#contact" className="hover:text-foreground">Contact</a>
-          </nav>
-          <ThemeToggle />
-        </div>
-      </header>
+      <SideIndex />
+      <div className="fixed right-5 top-5 z-30 lg:hidden">
+        <ThemeToggle />
+      </div>
 
       <main className="mx-auto max-w-3xl px-6">
         <section className="animate-float-in pt-8 pb-16">
