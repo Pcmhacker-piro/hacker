@@ -4,7 +4,7 @@ export function HeroBanner() {
   return (
     <div className="banner-art group relative -mx-4 mb-2 overflow-hidden sm:-mx-6">
       <img
-        src={heroArt.url}
+        src={heroArt}
         alt="A knight resting in a field of flowers under a bright sky"
         width={1920}
         height={640}
