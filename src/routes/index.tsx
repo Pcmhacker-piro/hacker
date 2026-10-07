@@ -6,6 +6,7 @@ import { Reveal } from "@/components/Reveal";
 import { Github, Linkedin, Twitter, Mail, ChevronDown } from "lucide-react";
 import verdiqyImg from "@/assets/verdiqy.jpg";
 import novixImg from "@/assets/novix.jpg";
+import inamigosLogo from "@/assets/inamigos-logo.png.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -78,7 +79,7 @@ const experiences = [
     date: "Jul 2026 – Aug 2026",
     place: "Remote",
     mark: "IA",
-    logo: "https://icons.duckduckgo.com/ip3/inamigosfoundation.org.ico",
+    logo: inamigosLogo.url,
     metrics: [
       { v: "6", l: "UX flows" },
       { v: "4", l: "Sections shipped" },
