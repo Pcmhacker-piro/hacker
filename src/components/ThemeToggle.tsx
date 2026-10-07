@@ -43,7 +43,7 @@ export function ThemeToggle() {
     <button
       onClick={toggle}
       aria-label="Toggle theme"
-      className="relative flex h-9 w-9 items-center justify-center overflow-hidden rounded-full border border-border hover:bg-accent"
+      className="relative flex h-8 w-8 items-center justify-center overflow-hidden rounded-md text-muted-foreground transition-colors hover:text-foreground"
     >
       <svg
         viewBox="0 0 24 24"
