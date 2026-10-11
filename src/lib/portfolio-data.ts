@@ -1,5 +1,9 @@
 import verdiqyImg from "@/assets/verdiqy.jpg";
 import novixImg from "@/assets/novix.jpg";
+import verdiqyStory1 from "@/assets/verdiqy-story-1.png";
+import verdiqyStory2 from "@/assets/verdiqy-story-2.png";
+import novixStory1 from "@/assets/novix-story-1.png";
+import novixStory2 from "@/assets/novix-story-2.png";
 import inamigosLogo from "@/assets/inamigos-logo.png.asset.json";
 import eliteCodersLogo from "@/assets/elite-coders-logo.png.asset.json";
 
@@ -89,6 +93,22 @@ export const projects = [
       "Contest tracker across Codeforces, LeetCode and CodeChef with an analytics dashboard.",
       "Hint-only AI Mentor for spoiler-free guidance and a ranked solution-video pipeline.",
     ],
+    story: {
+      problem:
+        "Competitive programmers juggle a dozen tools at once — solved lists lost across browser tabs, no idea which topic is actually weak, editorials scattered across YouTube, and contests missed because of timezones. Practice is hard; the tooling made it harder.",
+      built: [
+        "A sheet builder that turns a 12,000+ problem bank into custom practice sets, with Codeforces profile comparison built in.",
+        "A mastery engine that scores every solve, skip and mistake per topic, so you see exactly where you stand.",
+        "A contest radar covering Codeforces, LeetCode and CodeChef with local-time reminders before every round.",
+        "A hint-only AI Mentor that guides without spoiling, plus a ranked pipeline of solution videos.",
+      ],
+      result:
+        "One workspace instead of twelve tabs: a single source of truth for practice, topic mastery surfaced automatically, editorial videos next to each problem, and no more missed rounds.",
+      shots: [
+        { img: verdiqyStory1, caption: "The problem, side by side — practice before and after Verdiqy." },
+        { img: verdiqyStory2, caption: "Topic-by-topic mastery scores and the contest radar, live." },
+      ],
+    },
   },
   {
     name: "Novix UI",
@@ -103,6 +123,22 @@ export const projects = [
       "Token-driven OKLCH theming with instant dark mode and zero hardcoded colors.",
       "Scaffolding CLI (@novix-ui/cli) and a spring-physics motion system, fully tree-shakeable.",
     ],
+    story: {
+      problem:
+        "Building a polished interface means rebuilding the same buttons, loaders and cards from scratch every project — or fighting a component library that locks you into its look and bundles code you never use.",
+      built: [
+        "@novix-ui/react — 500+ accessible components written in strict TypeScript, every one tree-shakeable.",
+        "Token-driven OKLCH theming with instant dark mode and zero hardcoded colors, so the library takes on your brand.",
+        "A community elements gallery where every tile is a real, working component you can copy and paste.",
+        "@novix-ui/cli for scaffolding, plus a spring-physics motion system for natural animations.",
+      ],
+      result:
+        "A library that feels like your own design system: copy the element you love, remix the rest, and ship interfaces without fighting the tools. Free forever under the MIT license.",
+      shots: [
+        { img: novixStory1, caption: "The elements gallery — every tile is a live, working component." },
+        { img: novixStory2, caption: "Community stats and the weekly design challenge." },
+      ],
+    },
   },
 ];
 
