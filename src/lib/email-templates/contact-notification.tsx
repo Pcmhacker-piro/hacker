@@ -49,7 +49,7 @@ const Email = ({ name, email, message }: Props) => (
 export const template = {
   component: Email,
   subject: (data: Record<string, any>) =>
-    `Portfolio message from ${data.name || 'a visitor'}`,
+    `Portfolio message from ${data['name'] || 'a visitor'}`,
   displayName: 'Contact form notification',
   previewData: {
     name: 'Jane Doe',
