@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { projects } from "@/lib/portfolio-data";
-import { Button } from "@/components/ui/button";
-import { ArrowLeft, ArrowUpRight, Github } from "lucide-react";
+import { BackButton } from "@/components/BackButton";
+import { ArrowUpRight, Github } from "lucide-react";
 
 export const Route = createFileRoute("/projects/")({
   head: () => ({
@@ -45,11 +45,7 @@ function ProjectsPage() {
     <div className="min-h-screen bg-background text-foreground">
       <main className="mx-auto max-w-3xl px-6 py-10">
         <div className="flex items-center justify-between gap-4">
-          <Button asChild variant="ghost" size="sm">
-            <Link to="/">
-              <ArrowLeft /> Back to home
-            </Link>
-          </Button>
+          <BackButton to="/" label="Back to home" />
           <a
             href="https://github.com/Pcmhacker-piro?tab=repositories"
             target="_blank"
