@@ -211,3 +211,34 @@ body::before {
   to { opacity: 1; transform: none; filter: none; }
 }
 .animate-float-in { animation: float-in 1.1s cubic-bezier(.22,1,.36,1) both; }
+
+/* ---------------------------------------------------------------------------
+ * Host-injected "Edit with Lovable" badge.
+ *
+ * The badge is not part of this app: the host appends it to the served HTML
+ * after the app mounts, together with its own style block that sets colours
+ * and box-shadow with !important. It is position: fixed, so removing it takes
+ * nothing out of the document flow — the layout is untouched.
+ *
+ * Selectors are written with html/body prefixes so their specificity is higher
+ * than the injected block's, and every declaration uses !important, so the
+ * rule wins no matter which stylesheet the browser parses last.
+ * ------------------------------------------------------------------------- */
+html body #lovable-badge,
+html body [id^="lovable-badge"],
+html body [aria-label="Edit with Lovable"],
+html body [data-lovable-badge],
+html body a[href^="https://lovable.dev/projects"] {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  min-width: 0 !important;
+  min-height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  overflow: hidden !important;
+}
