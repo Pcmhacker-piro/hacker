@@ -5,7 +5,7 @@ import eliteCodersLogo from "@/assets/elite-coders-logo.png.asset.json";
 
 export const stats = [
   { v: "28th", l: "GSSoC 2026 global rank" },
-  { v: "28th", l: "GSSoC 2026 rank of 43k+" },
+  { v: "700+", l: "LeetCode problems solved" },
   { v: "1700+", l: "LeetCode rating" },
   { v: "3★", l: "CodeChef" },
 ];
@@ -31,7 +31,7 @@ export const experiences = [
     logo: "https://icons.duckduckgo.com/ip3/gssoc.girlscript.tech.ico",
     metrics: [
       { v: "#28", l: "of 43,000+" },
-      { v: "600", l: "PRs merged" },
+      { v: "Top 0.1%", l: "Global ranking" },
       { v: "1,200+", l: "Issues resolved" },
       { v: "49", l: "Repositories" },
     ],
