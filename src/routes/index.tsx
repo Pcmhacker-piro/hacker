@@ -137,8 +137,13 @@ function Index() {
             <ul className="mt-4 space-y-1.5 pl-4 text-[15px] text-muted-foreground">
               <li className="list-disc">CSE undergrad at <strong className="font-semibold text-foreground">IIIT Dharwad</strong>, Karnataka.</li>
               <li className="list-disc">Ranked <strong className="font-semibold text-foreground">28th globally</strong> in GSSoC 2026 among 43,000+ contributors.</li>
-              <li className="list-disc">Currently building <strong className="font-semibold text-foreground">Verdiqy</strong>, <strong className="font-semibold text-foreground">Novix UI</strong>, and more.</li>
             </ul>
+            <div className="mt-4 flex items-start gap-2.5 rounded-lg border border-dashed border-primary/30 bg-primary/5 px-3 py-2.5 text-sm text-muted-foreground">
+              <span className="mt-1.5 h-2 w-2 shrink-0 animate-pulse rounded-full bg-primary" />
+              <p>
+                <span className="font-semibold text-foreground">Now</span> — building the <strong className="font-semibold text-foreground">AI Mentor</strong> inside Verdiqy and shipping new components for <strong className="font-semibold text-foreground">Novix UI</strong>.
+              </p>
+            </div>
             <div className="mt-6 flex flex-wrap gap-2">
               <a href="mailto:pcmeena511@gmail.com" className="inline-flex items-center gap-2 rounded-md bg-primary px-3 py-1.5 text-sm font-medium text-primary-foreground shadow-elegant transition-all hover:-translate-y-0.5 hover:opacity-90">
                 Send an email
