@@ -3,7 +3,7 @@ import { projects } from "@/lib/portfolio-data";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, ArrowUpRight, Github } from "lucide-react";
 
-export const Route = createFileRoute("/projects")({
+export const Route = createFileRoute("/projects/")({
   head: () => ({
     meta: [
       { title: "Projects — Prakash Meena" },
@@ -59,11 +59,11 @@ function ProjectsPage() {
               key={p.name}
               className={`group flex flex-col p-4 sm:p-5 ${i % 2 === 0 ? "sm:border-r sm:border-dashed sm:border-border" : ""} ${i >= 2 ? "border-t border-dashed border-border" : ""} ${i === 1 ? "border-t border-dashed border-border sm:border-t-0" : ""}`}
             >
-              <a href={p.live} target="_blank" rel="noreferrer" className="block rounded-2xl border border-border bg-muted/40 p-4 shadow-sm transition-all duration-300 group-hover:-translate-y-0.5 group-hover:shadow-elegant">
+              <Link to="/projects/$slug" params={{ slug: p.slug }} className="block rounded-2xl border border-border bg-muted/40 p-4 shadow-sm transition-all duration-300 group-hover:-translate-y-0.5 group-hover:shadow-elegant">
                 <div className="overflow-hidden rounded-lg">
                   <img src={p.img} alt={`${p.name} preview`} width={1280} height={720} loading="lazy" className="aspect-[16/10] w-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.04]" />
                 </div>
-              </a>
+              </Link>
               <div className="mt-4 flex items-center justify-between gap-2">
                 <h2 className="font-semibold tracking-tight">{p.name}</h2>
                 <span className="inline-flex items-center gap-1.5 rounded-full border border-border bg-background px-2.5 py-0.5 text-xs text-muted-foreground">
@@ -71,15 +71,10 @@ function ProjectsPage() {
                 </span>
               </div>
               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{p.tagline}</p>
-              <div className="mt-auto flex items-end justify-between gap-3 pt-4">
-                <div className="flex flex-wrap gap-1">
-                  {p.stack.map((t) => (
-                    <span key={t} className="rounded border border-border bg-muted px-1.5 py-0.5 font-mono text-[10px] text-muted-foreground">{t}</span>
-                  ))}
-                </div>
-                <a href={p.live} target="_blank" rel="noreferrer" className="inline-flex shrink-0 items-center gap-1 text-sm font-medium text-foreground/80 hover:text-foreground">
-                  View Project <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-                </a>
+              <div className="mt-auto flex items-end justify-end pt-4">
+                <Link to="/projects/$slug" params={{ slug: p.slug }} className="inline-flex shrink-0 items-center gap-1 text-sm font-medium text-foreground/80 transition-colors hover:text-foreground">
+                  View Project <ArrowUpRight className="h-3.5 w-3.5" />
+                </Link>
               </div>
             </article>
           ))}
