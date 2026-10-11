@@ -1,4 +1,4 @@
-import { createFileRoute, Link, notFound } from "@tanstack/react-router";
+import { createFileRoute, notFound } from "@tanstack/react-router";
 import { projects } from "@/lib/portfolio-data";
 import { BackButton } from "@/components/BackButton";
 import { Github, ArrowUpRight, Mail, Check } from "lucide-react";
