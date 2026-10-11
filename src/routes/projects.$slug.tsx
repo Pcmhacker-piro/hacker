@@ -1,6 +1,7 @@
-import { createFileRoute, Link, notFound } from "@tanstack/react-router";
+import { createFileRoute, notFound } from "@tanstack/react-router";
 import { projects } from "@/lib/portfolio-data";
-import { ArrowLeft, Github, ArrowUpRight, Mail, Check } from "lucide-react";
+import { BackButton } from "@/components/BackButton";
+import { Github, ArrowUpRight, Mail, Check } from "lucide-react";
 import { ThemeToggle } from "@/components/ThemeToggle";
 
 export const Route = createFileRoute("/projects/$slug")({
@@ -48,13 +49,7 @@ function ProjectDetail() {
       <main className="rail-main mx-auto max-w-3xl px-4 sm:px-5">
         <section className="rail-row flex items-center justify-between gap-3 py-4">
           <div className="flex items-center gap-3">
-            <Link
-              to="/projects"
-              className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-border bg-card transition-all hover:-translate-y-0.5 hover:border-primary/50 hover:shadow-elegant"
-              aria-label="Back to all projects"
-            >
-              <ArrowLeft className="h-4 w-4" />
-            </Link>
+            <BackButton to="/projects" label="All projects" />
             <div>
               <h1 className="font-display text-lg font-bold tracking-tight">{p.name}</h1>
               <p className="text-xs text-muted-foreground">Projects / {p.name}</p>
