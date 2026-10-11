@@ -9,7 +9,7 @@ import { ThemeToggle } from "@/components/ThemeToggle";
 import { HeroBanner } from "@/components/HeroBanner";
 import { Reveal } from "@/components/Reveal";
 import { MessageForm } from "@/components/MessageForm";
-import { Github, Linkedin, Twitter, Mail, ChevronDown, ArrowUpRight, Pin, Command, Moon, Sun, Copy, Sparkles, Loader2 } from "lucide-react";
+import { Github, Linkedin, Twitter, Mail, ChevronDown, ArrowUpRight, Command, Moon, Sun, Copy, Sparkles, Loader2 } from "lucide-react";
 import {
   CommandDialog,
   CommandEmpty,
@@ -374,9 +374,6 @@ function ProjectCard({ p }: { p: (typeof projects)[number] }) {
           style={{ background: "radial-gradient(420px circle at var(--mx,50%) var(--my,50%), color-mix(in oklab, var(--primary) 14%, transparent), transparent 60%)" }}
         />
         <div className="relative rounded-xl border border-border bg-muted/50 px-4 pt-7 shadow-inner" style={{ transform: "translateZ(40px)" }}>
-          <span className="absolute right-3 top-2 grid h-6 w-6 place-items-center rounded-md border border-border bg-background text-muted-foreground shadow-sm">
-            <Pin className="h-3 w-3" />
-          </span>
           <div className="overflow-hidden rounded-t-lg border border-b-0 border-border shadow-lg">
             <img src={p.img} alt={`${p.name} preview`} width={1280} height={720} loading="lazy" className="aspect-[16/8] w-full object-cover object-top transition-transform duration-700 group-hover:scale-[1.04]" />
           </div>
