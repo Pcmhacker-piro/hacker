@@ -26,7 +26,7 @@ export function HeroBanner() {
     };
   }, []);
   return (
-    <div ref={banner} className="banner-art group relative -mx-4 mb-2 overflow-hidden sm:-mx-6">
+    <div ref={banner} className="banner-art group relative -mx-4 mb-3 overflow-hidden rounded-2xl sm:-mx-6">
       <img
         src={heroArt}
         alt="A knight resting in a field of flowers under a bright sky"
@@ -38,7 +38,7 @@ export function HeroBanner() {
         {animate && <Suspense fallback={null}><SkyStars /></Suspense>}
       </div>
       {/* soft fade into the page background on every edge */}
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-background/5 via-transparent to-background/30 dark:from-background/20 dark:to-background/55" />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-background/5 via-transparent via-60% to-background/90 dark:from-background/15 dark:via-transparent dark:via-55% dark:to-background" />
       <div className="pointer-events-none absolute inset-0 hidden bg-gradient-to-r from-background/20 via-transparent to-background/20 dark:block" />
     </div>
   );
