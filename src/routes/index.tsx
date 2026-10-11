@@ -166,15 +166,13 @@ function Index() {
             ))}
           </div>
           <div className="mt-8 flex justify-center">
-            <a
-              href="https://github.com/Pcmhacker-piro?tab=repositories"
-              target="_blank"
-              rel="noreferrer"
+            <Link
+              to="/projects"
               className="group inline-flex items-center gap-2 rounded-full border border-border bg-card px-5 py-2.5 text-sm font-medium text-foreground shadow-elegant transition-all duration-300 hover:-translate-y-0.5 hover:border-primary/50 hover:shadow-glow"
             >
               View all projects
               <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
-            </a>
+            </Link>
           </div>
         </section>
 
