@@ -7,6 +7,7 @@ import type { MouseEvent as RMouseEvent } from "react";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { HeroBanner } from "@/components/HeroBanner";
 import { Reveal } from "@/components/Reveal";
+import { MessageForm } from "@/components/MessageForm";
 import { Github, Linkedin, Twitter, Mail, ChevronDown, ArrowUpRight, Pin, Command, Moon, Sun, Copy, Sparkles, Loader2 } from "lucide-react";
 import {
   CommandDialog,
@@ -230,13 +231,16 @@ function Index() {
           <SectionTitle id="contact">Contact</SectionTitle>
           <h3 className="text-gradient text-3xl font-semibold tracking-tight">Let's build something together.</h3>
           <p className="mt-2 text-muted-foreground">Dharwad, Karnataka, India · pcmeena511@gmail.com</p>
-          <div className="mt-6 flex flex-wrap gap-3">
-            {socials.map((s) => (
-              <a key={s.label} href={s.href} target="_blank" rel="noreferrer" className="group inline-flex items-center gap-2 rounded-lg border border-border px-4 py-2 text-sm transition-all hover:-translate-y-0.5 hover:border-primary/50 hover:bg-accent">
-                <s.Icon className="h-4 w-4 transition-transform group-hover:scale-110 group-hover:text-primary" />
-                {s.label}
-              </a>
-            ))}
+          <div className="mt-8 grid gap-10 lg:grid-cols-[minmax(0,1fr)_220px] lg:items-start">
+            <MessageForm />
+            <div className="flex flex-wrap gap-3 lg:flex-col lg:items-stretch">
+              {socials.map((s) => (
+                <a key={s.label} href={s.href} target="_blank" rel="noreferrer" className="group inline-flex items-center gap-2 rounded-lg border border-border px-4 py-2 text-sm transition-all hover:-translate-y-0.5 hover:border-primary/50 hover:bg-accent">
+                  <s.Icon className="h-4 w-4 transition-transform group-hover:scale-110 group-hover:text-primary" />
+                  {s.label}
+                </a>
+              ))}
+            </div>
           </div>
         </section>
       </main>
