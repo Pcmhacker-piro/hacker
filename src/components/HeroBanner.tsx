@@ -26,7 +26,7 @@ export function HeroBanner() {
     };
   }, []);
   return (
-    <div ref={banner} className="banner-art group relative -mx-4 mb-3 overflow-hidden rounded-2xl sm:-mx-6">
+    <div ref={banner} className="banner-art group relative mx-[calc(50%-50vw)] mb-3 w-screen overflow-hidden rounded-none">
       <img
         src={heroArt}
         alt="A knight resting in a field of flowers under a bright sky"
