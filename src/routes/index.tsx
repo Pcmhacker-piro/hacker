@@ -42,7 +42,7 @@ export const Route = createFileRoute("/")({
 });
 
 const socials = [
-  { label: "GitHub", href: "https://github.com/", Icon: Github },
+  { label: "GitHub", href: "https://github.com/Pcmhacker-piro", Icon: Github },
   { label: "LinkedIn", href: "https://linkedin.com/in/prakash-meena-a46906324", Icon: Linkedin },
   { label: "X", href: "https://x.com/", Icon: Twitter },
   { label: "Email", href: "mailto:pcmeena511@gmail.com", Icon: Mail },
