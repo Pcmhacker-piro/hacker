@@ -36,7 +36,23 @@ export const Route = createFileRoute("/")({
         content: "Full-stack engineer, open source contributor and competitive programmer from IIIT Dharwad.",
       },
       { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary" },
+      {
+        property: "og:image",
+        content: "https://id-preview--908b13f2-f384-4573-a580-f76d98d49879.lovable.app/og.jpg",
+      },
+      {
+        property: "og:image:width",
+        content: "1200",
+      },
+      {
+        property: "og:image:height",
+        content: "630",
+      },
+      {
+        name: "twitter:image",
+        content: "https://id-preview--908b13f2-f384-4573-a580-f76d98d49879.lovable.app/og.jpg",
+      },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: Index,
