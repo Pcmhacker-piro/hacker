@@ -189,8 +189,10 @@ function Clock() {
 
 function SectionTitle({ id, children }: { id: string; children: string }) {
   return (
-    <h2 id={id} className="mb-6 scroll-mt-24 font-mono text-xs uppercase tracking-[0.25em] text-muted-foreground">
+    <h2 id={id} className="mb-6 flex scroll-mt-24 items-center gap-3 font-mono text-xs uppercase tracking-[0.25em] text-muted-foreground">
+      <span aria-hidden="true" className="h-1.5 w-1.5 rounded-full bg-gradient-primary shadow-glow" />
       {children}
+      <span aria-hidden="true" className="h-px flex-1 bg-gradient-to-r from-border to-transparent" />
     </h2>
   );
 }
@@ -222,11 +224,14 @@ function Index() {
             <Clock />
           </div>
           <div className="flex items-center gap-5">
-            <div className="flex h-20 w-20 items-center justify-center rounded-2xl border border-border bg-card font-mono text-2xl font-semibold text-primary">
-              PM
+            <div className="relative">
+              <div aria-hidden="true" className="absolute -inset-1 rounded-2xl bg-gradient-primary opacity-40 blur-md" />
+              <div className="relative flex h-20 w-20 items-center justify-center rounded-2xl border border-border bg-card font-mono text-2xl font-semibold text-primary shadow-elegant">
+                PM
+              </div>
             </div>
             <div>
-              <h1 className="font-display text-3xl font-extrabold tracking-tight sm:text-4xl">Prakash Meena</h1>
+              <h1 className="text-gradient font-display text-3xl font-extrabold tracking-tight sm:text-4xl">Prakash Meena</h1>
               <p className="mt-1 text-muted-foreground">Full-Stack Engineer · Open Source · Competitive Programmer</p>
             </div>
           </div>
@@ -234,25 +239,25 @@ function Index() {
             I build, break, and ship things — from component libraries to training platforms.
           </p>
           <ul className="mt-4 space-y-2 text-muted-foreground">
-            <li>• CSE undergrad at IIIT Dharwad, Karnataka.</li>
-            <li>• Ranked 28th globally in GSSoC 2026 among 43,000+ contributors.</li>
-            <li>• Currently building Verdiqy and Novix UI.</li>
+            <li className="flex gap-2"><span className="text-primary">▹</span> CSE undergrad at IIIT Dharwad, Karnataka.</li>
+            <li className="flex gap-2"><span className="text-primary">▹</span> Ranked 28th globally in GSSoC 2026 among 43,000+ contributors.</li>
+            <li className="flex gap-2"><span className="text-primary">▹</span> Currently building Verdiqy and Novix UI.</li>
           </ul>
           <div className="mt-8 flex flex-wrap gap-3">
-            <a href="mailto:pcmeena511@gmail.com" className="rounded-lg bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:opacity-90">
+            <a href="mailto:pcmeena511@gmail.com" className="rounded-lg bg-gradient-primary px-4 py-2 text-sm font-medium text-primary-foreground shadow-elegant transition-all hover:-translate-y-0.5 hover:shadow-glow">
               Send an email
             </a>
             {socials.slice(0, 3).map((s) => (
-              <a key={s.label} href={s.href} target="_blank" rel="noreferrer" className="group inline-flex items-center gap-2 rounded-lg border border-border px-4 py-2 text-sm transition-all hover:-translate-y-0.5 hover:border-primary/50 hover:bg-accent">
+              <a key={s.label} href={s.href} target="_blank" rel="noreferrer" className="group inline-flex items-center gap-2 rounded-lg border border-border bg-card/60 px-4 py-2 text-sm backdrop-blur transition-all hover:-translate-y-0.5 hover:border-primary/50 hover:bg-accent hover:shadow-elegant">
                 <s.Icon className="h-4 w-4 transition-transform group-hover:scale-110 group-hover:text-primary" />
                 {s.label}
               </a>
             ))}
           </div>
-          <div className="mt-12 grid grid-cols-2 gap-px overflow-hidden rounded-xl border border-border bg-border sm:grid-cols-4">
+          <div className="mt-12 grid grid-cols-2 gap-3 sm:grid-cols-4">
             {stats.map((s) => (
-              <div key={s.l} className="bg-card p-4">
-                <div className="text-2xl font-semibold">{s.v}</div>
+              <div key={s.l} className="group rounded-xl border border-border bg-card p-4 shadow-elegant transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-glow">
+                <div className="text-gradient text-2xl font-semibold">{s.v}</div>
                 <div className="mt-1 text-xs text-muted-foreground">{s.l}</div>
               </div>
             ))}
@@ -322,7 +327,7 @@ function Index() {
 
         <section className="py-12">
           <SectionTitle id="education">Education</SectionTitle>
-          <div className="rounded-2xl border border-border bg-card p-6">
+          <div className="rounded-2xl border border-border bg-card p-6 shadow-elegant transition-all duration-300 hover:-translate-y-0.5 hover:border-primary/40 hover:shadow-glow">
             <h3 className="font-semibold">IIIT Dharwad</h3>
             <p className="text-sm text-muted-foreground">B.Tech in Computer Science & Engineering · CGPA 7.23 · Expected 2028</p>
           </div>
@@ -330,7 +335,7 @@ function Index() {
 
         <section className="py-16">
           <SectionTitle id="contact">Contact</SectionTitle>
-          <h3 className="text-2xl font-semibold">Let's build something together.</h3>
+          <h3 className="text-gradient text-3xl font-semibold tracking-tight">Let's build something together.</h3>
           <p className="mt-2 text-muted-foreground">Dharwad, Karnataka, India · pcmeena511@gmail.com</p>
           <div className="mt-6 flex flex-wrap gap-3">
             {socials.map((s) => (

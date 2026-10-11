@@ -242,3 +242,14 @@ html body a[href^="https://lovable.dev/projects"] {
   border: 0 !important;
   overflow: hidden !important;
 }
+
+@utility bg-gradient-primary {
+  background-image: var(--gradient-primary);
+}
+
+@utility text-gradient {
+  background-image: linear-gradient(120deg, var(--foreground) 30%, var(--primary-glow));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
