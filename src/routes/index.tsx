@@ -393,11 +393,6 @@ function ProjectCard({ p }: { p: (typeof projects)[number] }) {
             </span>
           </div>
           <p className="mt-1 line-clamp-1 flex-1 text-[13px] text-muted-foreground">{p.tagline}</p>
-          <div className="mt-3 flex flex-wrap gap-1.5">
-            {p.stack.slice(0, 4).map((s) => (
-              <Tag key={s}>{s}</Tag>
-            ))}
-          </div>
           <div className="mt-3 flex items-center gap-2">
             <a href={p.live} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1.5 rounded-md border border-foreground bg-foreground px-3 py-1.5 text-xs font-medium text-background transition-transform hover:-translate-y-0.5">
               View Live <ArrowUpRight className="h-3.5 w-3.5" />
