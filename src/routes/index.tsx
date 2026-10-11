@@ -101,7 +101,6 @@ function Index() {
               <p className="text-sm text-muted-foreground">Full-Stack Engineer · Open Source · CP</p>
             </div>
             <div className="absolute right-0 top-3 flex items-center gap-1">
-              <Button asChild variant="ghost" size="sm"><Link to="/linkedin">Profile <ArrowUpRight /></Link></Button>
               <CommandPalette />
               <ThemeToggle />
             </div>
