@@ -59,14 +59,35 @@ export const Route = createFileRoute("/api/public/contact")({
           );
         }
 
-        // Delivery turns on as soon as the sender domain is verified.
-        return Response.json(
-          {
-            ok: false,
-            error: "Messages aren't arriving yet — email pcmeena511@gmail.com for now.",
-          },
-          { status: 503 },
+        const { name, email, message } = parsed.data;
+        const digest = await crypto.subtle.digest(
+          "SHA-256",
+          new TextEncoder().encode(`${name}|${email}|${message}`),
         );
+        const idempotencyKey = `contact-${Array.from(new Uint8Array(digest), (b) =>
+          b.toString(16).padStart(2, "0"),
+        )
+          .join("")
+          .slice(0, 24)}`;
+
+        try {
+          const { sendTemplateEmail } = await import("@/lib/email-templates/send-email");
+          await sendTemplateEmail("contact-notification", email, {
+            templateData: { name, email, message },
+            idempotencyKey,
+            replyTo: email,
+          });
+          return Response.json({ ok: true });
+        } catch (error) {
+          console.error("contact send failed", error);
+          return Response.json(
+            {
+              ok: false,
+              error: "Couldn't send right now — email pcmeena511@gmail.com instead.",
+            },
+            { status: 502 },
+          );
+        }
       },
     },
   },
