@@ -26,13 +26,13 @@ export function HeroBanner() {
     };
   }, []);
   return (
-    <div ref={banner} className="banner-art group relative mx-[calc(50%-50vw)] mb-3 w-screen overflow-hidden rounded-none">
+    <div ref={banner} className="banner-art group relative -mx-4 mb-3 overflow-hidden rounded-none sm:-mx-5">
       <img
         src={heroArt}
         alt="A knight resting in a field of flowers under a bright sky"
         width={1920}
         height={640}
-        className="h-48 w-full object-cover brightness-[1.08] saturate-[1.16] transition-transform duration-[2500ms] ease-out motion-safe:group-hover:scale-[1.03] dark:brightness-[1.12] dark:saturate-[1.15] sm:h-64"
+        className="aspect-[16/5] w-full object-cover brightness-[1.08] saturate-[1.16] transition-transform duration-[2500ms] ease-out motion-safe:group-hover:scale-[1.03] dark:brightness-[1.12] dark:saturate-[1.15]"
       />
       <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-0 h-[55%]">
         {animate && <Suspense fallback={null}><SkyStars /></Suspense>}
