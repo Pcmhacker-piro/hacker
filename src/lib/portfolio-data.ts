@@ -78,6 +78,7 @@ export const experiences = [
 export const projects = [
   {
     name: "Verdiqy",
+    slug: "verdiqy",
     img: verdiqyImg,
     tagline: "Unified competitive programming training platform",
     stack: ["React 19", "TypeScript", "TanStack Start", "PostgreSQL", "Gemini API"],
@@ -91,6 +92,7 @@ export const projects = [
   },
   {
     name: "Novix UI",
+    slug: "novix-ui",
     img: novixImg,
     tagline: "Open-source React component library",
     stack: ["TypeScript", "Tailwind CSS v4", "Radix UI", "Motion"],
