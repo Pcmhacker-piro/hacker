@@ -640,3 +640,67 @@ function CommandPalette() {
     </>
   );
 }
+
+function ProjectFinder() {
+  const ask = useServerFn(recommendProjects);
+  const [query, setQuery] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [res, setRes] = useState<RecommendResult | null>(null);
+
+  async function onSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    if (query.trim().length < 3 || loading) return;
+    setLoading(true);
+    try {
+      setRes(await ask({ data: { query } }));
+    } catch {
+      setRes({ picks: [], summary: "", error: "Couldn't get recommendations. Please try again." });
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  return (
+    <div className="mb-6 rounded-lg border border-border bg-card/60 p-4">
+      <div className="mb-2 flex items-center gap-2 text-sm font-medium">
+        <Sparkles className="h-4 w-4 text-primary" /> Find the right project
+      </div>
+      <form onSubmit={onSubmit} className="flex gap-2">
+        <input
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+          maxLength={500}
+          placeholder="e.g. I want to see design systems or AI work"
+          aria-label="Describe the work you want to see"
+          className="min-w-0 flex-1 rounded-md border border-input bg-background px-3 py-2 text-sm outline-none focus-visible:ring-2 focus-visible:ring-ring"
+        />
+        <button
+          type="submit"
+          disabled={loading || query.trim().length < 3}
+          className="inline-flex items-center gap-1.5 rounded-md bg-primary px-3 py-2 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90 disabled:opacity-50"
+        >
+          {loading ? <Loader2 className="h-4 w-4 animate-spin" /> : <Sparkles className="h-4 w-4" />}
+          {loading ? "Thinking" : "Recommend"}
+        </button>
+      </form>
+      {res && (
+        <div className="mt-3 space-y-2 text-sm" aria-live="polite">
+          {res.error ? (
+            <p className="text-destructive">{res.error}</p>
+          ) : (
+            <>
+              {res.summary && <p className="text-muted-foreground">{res.summary}</p>}
+              {res.picks.length === 0 && <p className="text-muted-foreground">No close match — have a look at everything below.</p>}
+              {res.picks.map((p) => (
+                <div key={p.name} className="rounded-md border border-border bg-background/60 p-2.5">
+                  <span className="font-medium text-primary">{p.name}</span>
+                  <span className="text-muted-foreground"> — {p.reason}</span>
+                </div>
+              ))}
+            </>
+          )}
+        </div>
+      )}
+    </div>
+  );
+}
