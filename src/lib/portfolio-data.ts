@@ -5,7 +5,7 @@ import eliteCodersLogo from "@/assets/elite-coders-logo.png.asset.json";
 
 export const stats = [
   { v: "28th", l: "GSSoC 2026 global rank" },
-  { v: "700+", l: "LeetCode problems solved" },
+  { v: "700+", l: "Total problems solved" },
   { v: "1700+", l: "LeetCode rating" },
   { v: "3★", l: "CodeChef" },
 ];
