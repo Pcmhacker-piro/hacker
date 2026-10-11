@@ -28,7 +28,7 @@ export const recommendProjects = createServerFn({ method: "POST" })
     return { query };
   })
   .handler(async ({ data }): Promise<RecommendResult> => {
-    const apiKey = process.env.LOVABLE_API_KEY;
+    const apiKey = process.env['LOVABLE_API_KEY'];
     if (!apiKey) return { picks: [], summary: "", error: "AI is not configured yet." };
 
     const provider = createOpenAI({
