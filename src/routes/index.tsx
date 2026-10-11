@@ -150,7 +150,7 @@ function Index() {
           </div>
         </section>
 
-        <section className="py-12">
+        <section className="rail-row py-10">
           <SectionTitle id="experience">Experience</SectionTitle>
           <div>
             {experiences.map((e, i) => (
@@ -161,7 +161,7 @@ function Index() {
           </div>
         </section>
 
-        <section className="py-12">
+        <section className="rail-row py-10">
           <SectionTitle id="projects">Projects</SectionTitle>
           <div className="grid gap-6 sm:grid-cols-2">
             {projects.map((p, i) => (
@@ -181,7 +181,7 @@ function Index() {
           </div>
         </section>
 
-        <section className="py-12">
+        <section className="rail-row py-10">
           <SectionTitle id="open-source">Open source contributions</SectionTitle>
           <div className="divide-y divide-border overflow-hidden rounded-2xl border border-border bg-card shadow-elegant transition-shadow duration-300 hover:shadow-glow">
             {contributions.map((c) => (
@@ -203,7 +203,7 @@ function Index() {
           </div>
         </section>
 
-        <section className="py-12">
+        <section className="rail-row py-10">
           <SectionTitle id="skills">Skills</SectionTitle>
           <div className="space-y-1 rounded-2xl border border-border bg-card p-4 shadow-elegant sm:p-5">
             {Object.entries(skills).map(([k, v]) => (
@@ -219,7 +219,7 @@ function Index() {
           </div>
         </section>
 
-        <section className="py-12">
+        <section className="rail-row py-10">
           <SectionTitle id="education">Education</SectionTitle>
           <div className="rounded-2xl border border-border bg-card p-6 shadow-elegant transition-all duration-300 hover:-translate-y-0.5 hover:border-primary/40 hover:shadow-glow">
             <h3 className="font-semibold">IIIT Dharwad</h3>
@@ -227,7 +227,7 @@ function Index() {
           </div>
         </section>
 
-        <section className="py-16">
+        <section className="rail-row py-12">
           <SectionTitle id="contact">Contact</SectionTitle>
           <h3 className="text-gradient text-3xl font-semibold tracking-tight">Let's build something together.</h3>
           <p className="mt-2 text-muted-foreground">Dharwad, Karnataka, India · pcmeena511@gmail.com</p>
