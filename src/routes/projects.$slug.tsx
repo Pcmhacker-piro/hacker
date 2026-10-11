@@ -21,8 +21,11 @@ export const Route = createFileRoute("/projects/$slug")({
       ],
     };
   },
-  beforeLoad: ({ params }) => {
-    if (!projects.some((p) => p.slug === params.slug)) throw notFound();
+  beforeLoad: ({ params }): void => {
+    if (!projects.some((p) => p.slug === params.slug)) {
+      // eslint-disable-next-line @typescript-eslint/only-throw-error
+      throw notFound() as never;
+    }
   },
   component: ProjectDetail,
 });
