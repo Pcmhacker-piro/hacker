@@ -9,7 +9,7 @@ import { ThemeToggle } from "@/components/ThemeToggle";
 import { HeroBanner } from "@/components/HeroBanner";
 import { Reveal } from "@/components/Reveal";
 import { MessageForm } from "@/components/MessageForm";
-import { Github, Linkedin, Twitter, Mail, ChevronDown, ArrowUpRight, Pin, Command, Moon, Sun, Copy, Sparkles, Loader2 } from "lucide-react";
+import { Github, Linkedin, Twitter, Mail, ChevronDown, ArrowUpRight, Pin, Command, Moon, Sun, Copy, Sparkles, Loader2, Download } from "lucide-react";
 import {
   CommandDialog,
   CommandEmpty,
@@ -130,6 +130,9 @@ function Index() {
               <Link to="/projects" className="inline-flex items-center gap-2 rounded-md border border-border bg-card px-3 py-1.5 text-sm transition-all hover:-translate-y-0.5 hover:bg-accent">
                 View projects
               </Link>
+              <a href="/Prakash-Meena-Resume.pdf" download="Prakash-Meena-Resume.pdf" className="inline-flex items-center gap-2 rounded-md border border-border bg-card px-3 py-1.5 text-sm transition-all hover:-translate-y-0.5 hover:bg-accent">
+                <Download className="h-4 w-4" /> Resume
+              </a>
             </div>
             <p className="mt-6 text-sm text-muted-foreground">Here are my <span className="font-semibold text-foreground">socials</span></p>
             <div className="mt-2 flex flex-wrap gap-2">
