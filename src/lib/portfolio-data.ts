@@ -81,7 +81,7 @@ export const projects = [
     img: verdiqyImg,
     tagline: "Unified competitive programming training platform",
     stack: ["React 19", "TypeScript", "TanStack Start", "PostgreSQL", "Gemini API"],
-    live: "#",
+    live: "https://verdiqy.vercel.app/",
     code: "https://github.com/Pcmhacker-piro",
     points: [
       "Sheet builder for custom practice sets from a 12,000+ problem bank, plus Codeforces profile comparison.",
@@ -94,7 +94,7 @@ export const projects = [
     img: novixImg,
     tagline: "Open-source React component library",
     stack: ["TypeScript", "Tailwind CSS v4", "Radix UI", "Motion"],
-    live: "#",
+    live: "https://novixui.com/",
     code: "https://github.com/Pcmhacker-piro",
     points: [
       "Published @novix-ui/react with 500+ accessible components in strict TypeScript.",

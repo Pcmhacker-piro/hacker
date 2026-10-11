@@ -83,7 +83,7 @@ function ProfilePage() {
                 <a href="https://github.com/Pcmhacker-piro" target="_blank" rel="noreferrer"><Github className="mr-1 h-4 w-4" /> GitHub</a>
               </Button>
               <Button asChild size="sm" variant="outline" className="rounded-full">
-                <a href="https://www.linkedin.com" target="_blank" rel="noreferrer"><Linkedin className="mr-1 h-4 w-4" /> LinkedIn</a>
+                <a href="https://linkedin.com/in/prakash-meena-a46906324" target="_blank" rel="noreferrer"><Linkedin className="mr-1 h-4 w-4" /> LinkedIn</a>
               </Button>
             </div>
             <div className="mt-5 grid grid-cols-2 gap-3 sm:grid-cols-4">
