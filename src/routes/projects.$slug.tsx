@@ -41,7 +41,6 @@ export const Route = createFileRoute("/projects/$slug")({
 });
 
 function ProjectDetail() {
-  const { slug } = Route.useParams();
   const p = Route.useLoaderData();
 
   return (
@@ -127,11 +126,17 @@ function ProjectDetail() {
           <p className="mt-3 text-[15px] leading-relaxed text-muted-foreground">{p.tagline}</p>
         </section>
 
+        <section className="rail-row pb-8">
+          <h3 className="font-display mb-3 text-sm font-bold uppercase tracking-wide text-muted-foreground">The problem</h3>
+          <p className="rounded-xl border border-border bg-card/60 p-5 text-sm leading-relaxed text-muted-foreground">
+            {p.story.problem}
+          </p>
+        </section>
 
         <section className="rail-row pb-8">
-          <h3 className="font-display mb-3 text-sm font-bold uppercase tracking-wide text-muted-foreground">What it does</h3>
+          <h3 className="font-display mb-3 text-sm font-bold uppercase tracking-wide text-muted-foreground">What I built</h3>
           <ul className="space-y-3">
-            {p.points.map((point) => (
+            {p.story.built.map((point) => (
               <li
                 key={point}
                 className="flex gap-3 rounded-xl border border-border bg-card/60 p-4 text-sm leading-relaxed text-muted-foreground transition-all duration-300 hover:-translate-y-0.5 hover:border-primary/40 hover:shadow-elegant"
@@ -143,6 +148,34 @@ function ProjectDetail() {
               </li>
             ))}
           </ul>
+        </section>
+
+        <section className="rail-row pb-8">
+          <h3 className="font-display mb-3 text-sm font-bold uppercase tracking-wide text-muted-foreground">The result</h3>
+          <p className="rounded-xl border border-primary/25 bg-primary/5 p-5 text-sm leading-relaxed text-foreground">
+            {p.story.result}
+          </p>
+        </section>
+
+        <section className="rail-row pb-8">
+          <h3 className="font-display mb-3 text-sm font-bold uppercase tracking-wide text-muted-foreground">Inside the product</h3>
+          <div className="space-y-6">
+            {p.story.shots.map((shot) => (
+              <figure key={shot.caption} className="group">
+                <div className="overflow-hidden rounded-xl border border-border bg-card p-1.5 shadow-elegant transition-all duration-300 group-hover:border-primary/40">
+                  <img
+                    src={shot.img}
+                    alt={shot.caption}
+                    width={1280}
+                    height={900}
+                    loading="lazy"
+                    className="w-full rounded-lg object-cover object-top transition-transform duration-700 group-hover:scale-[1.02]"
+                  />
+                </div>
+                <figcaption className="mt-2 text-center text-xs text-muted-foreground">{shot.caption}</figcaption>
+              </figure>
+            ))}
+          </div>
         </section>
 
         <section className="rail-row pb-14 pt-2">
