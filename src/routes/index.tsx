@@ -3,7 +3,6 @@ import { Button } from "@/components/ui/button";
 import { Link, createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import { useServerFn } from "@tanstack/react-start";
-import { recommendProjects, type RecommendResult } from "@/lib/recommend.functions";
 import type { MouseEvent as RMouseEvent } from "react";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { HeroBanner } from "@/components/HeroBanner";
@@ -160,7 +159,6 @@ function Index() {
 
         <section className="py-12">
           <SectionTitle id="projects">Projects</SectionTitle>
-          <ProjectFinder />
           <div className="grid gap-6 sm:grid-cols-2">
             {projects.map((p, i) => (
               <Reveal key={p.name} delay={i * 120}>
@@ -533,83 +531,3 @@ function CommandPalette() {
   );
 }
 
-function ProjectFinder() {
-  const ask = useServerFn(recommendProjects);
-  const [query, setQuery] = useState("");
-  const [loading, setLoading] = useState(false);
-  const [res, setRes] = useState<RecommendResult | null>(null);
-
-  async function onSubmit(e: React.FormEvent) {
-    e.preventDefault();
-    if (query.trim().length < 3 || loading) return;
-    setLoading(true);
-    try {
-      setRes(await ask({ data: { query } }));
-    } catch {
-      setRes({ picks: [], summary: "", error: "Couldn't get recommendations. Please try again." });
-    } finally {
-      setLoading(false);
-    }
-  }
-
-  return (
-    <div className="relative mb-6 overflow-hidden rounded-xl border border-border bg-card/70 shadow-elegant backdrop-blur-sm">
-      <div
-        aria-hidden
-        className="pointer-events-none absolute -right-16 -top-16 h-40 w-40 rounded-full opacity-20 blur-3xl motion-safe:animate-pulse [background:radial-gradient(circle,var(--primary-glow),transparent_70%)]"
-      />
-      <div className="relative p-4">
-        <div className="mb-3 flex items-center justify-between gap-2">
-          <div className="flex items-center gap-2 text-sm font-medium">
-            <span className="inline-flex h-6 w-6 items-center justify-center rounded-md text-primary-foreground shadow-sm [background:var(--gradient-primary)]">
-              <Sparkles className="h-3.5 w-3.5" />
-            </span>
-            Find the right project
-          </div>
-          <span className="rounded-full border border-border bg-background/60 px-2 py-0.5 font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
-            AI
-          </span>
-        </div>
-        <form onSubmit={onSubmit} className="flex gap-2">
-          <input
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-            maxLength={500}
-            placeholder="e.g. I want to see design systems or AI work"
-            aria-label="Describe the work you want to see"
-            className="min-w-0 flex-1 rounded-md border border-input bg-background/60 px-3 py-2 text-sm outline-none transition-shadow placeholder:text-muted-foreground/70 focus-visible:border-ring focus-visible:shadow-glow"
-          />
-          <button
-            type="submit"
-            disabled={loading || query.trim().length < 3}
-            className="inline-flex items-center gap-1.5 rounded-md px-3 py-2 text-sm font-medium text-primary-foreground shadow-md transition-all [background:var(--gradient-primary)] hover:shadow-lg disabled:opacity-50 motion-safe:hover:-translate-y-px"
-          >
-            {loading ? <Loader2 className="h-4 w-4 animate-spin" /> : <Sparkles className="h-4 w-4" />}
-            {loading ? "Thinking" : "Recommend"}
-          </button>
-        </form>
-        {res && (
-          <div className="mt-3 space-y-2 text-sm" aria-live="polite">
-            {res.error ? (
-              <p className="text-destructive">{res.error}</p>
-            ) : (
-              <>
-                {res.summary && <p className="text-muted-foreground">{res.summary}</p>}
-                {res.picks.length === 0 && <p className="text-muted-foreground">No close match — have a look at everything below.</p>}
-                {res.picks.map((p) => (
-                  <div
-                    key={p.name}
-                    className="animate-in fade-in slide-in-from-bottom-1 rounded-md border border-border bg-background/60 p-2.5 transition-colors duration-300 hover:border-primary/40"
-                  >
-                    <span className="font-medium text-primary">{p.name}</span>
-                    <span className="text-muted-foreground"> — {p.reason}</span>
-                  </div>
-                ))}
-              </>
-            )}
-          </div>
-        )}
-      </div>
-    </div>
-  );
-}
