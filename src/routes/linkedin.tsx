@@ -112,7 +112,7 @@ function ProfilePage() {
         <Card title="Featured">
           <div className="grid gap-4 sm:grid-cols-2">
             {projects.map((p) => (
-              <a key={p.name} href={p.code} target="_blank" rel="noreferrer" className="group overflow-hidden rounded-lg border border-border transition hover:shadow-md">
+              <a key={p.name} href={p.live || p.code} target="_blank" rel="noreferrer" className="group overflow-hidden rounded-lg border border-border transition hover:shadow-md">
                 <img src={p.img} alt={p.name} className="aspect-video w-full object-cover" loading="lazy" />
                 <div className="p-3">
                   <div className="font-semibold group-hover:text-primary">{p.name}</div>
