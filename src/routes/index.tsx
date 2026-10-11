@@ -9,7 +9,7 @@ import { ThemeToggle } from "@/components/ThemeToggle";
 import { HeroBanner } from "@/components/HeroBanner";
 import { Reveal } from "@/components/Reveal";
 import { MessageForm } from "@/components/MessageForm";
-import { Github, Linkedin, Twitter, Mail, ChevronDown, ArrowUpRight, Pin, Command, Moon, Sun, Copy, Sparkles, Loader2, Download } from "lucide-react";
+import { Github, Linkedin, Twitter, Mail, ChevronDown, ArrowUpRight, Pin, Command, Moon, Sun, Copy, Sparkles, Loader2 } from "lucide-react";
 import {
   CommandDialog,
   CommandEmpty,
@@ -138,21 +138,9 @@ function Index() {
               <li className="list-disc">CSE undergrad at <strong className="font-semibold text-foreground">IIIT Dharwad</strong>, Karnataka.</li>
               <li className="list-disc">Ranked <strong className="font-semibold text-foreground">28th globally</strong> in GSSoC 2026 among 43,000+ contributors.</li>
             </ul>
-            <div className="mt-4 flex items-start gap-2.5 rounded-lg border border-dashed border-primary/30 bg-primary/5 px-3 py-2.5 text-sm text-muted-foreground">
-              <span className="mt-1.5 h-2 w-2 shrink-0 animate-pulse rounded-full bg-primary" />
-              <p>
-                <span className="font-semibold text-foreground">Now</span> — building the <strong className="font-semibold text-foreground">AI Mentor</strong> inside Verdiqy and shipping new components for <strong className="font-semibold text-foreground">Novix UI</strong>.
-              </p>
-            </div>
             <div className="mt-6 flex flex-wrap gap-2">
               <a href="mailto:pcmeena511@gmail.com" className="inline-flex items-center gap-2 rounded-md bg-primary px-3 py-1.5 text-sm font-medium text-primary-foreground shadow-elegant transition-all hover:-translate-y-0.5 hover:opacity-90">
                 Send an email
-              </a>
-              <Link to="/projects" className="inline-flex items-center gap-2 rounded-md border border-border bg-card px-3 py-1.5 text-sm transition-all hover:-translate-y-0.5 hover:bg-accent">
-                View projects
-              </Link>
-              <a href="/Prakash-Meena-Resume.pdf" download="Prakash-Meena-Resume.pdf" className="inline-flex items-center gap-2 rounded-md border border-border bg-card px-3 py-1.5 text-sm transition-all hover:-translate-y-0.5 hover:bg-accent">
-                <Download className="h-4 w-4" /> Resume
               </a>
             </div>
             <p className="mt-6 text-sm text-muted-foreground">Here are my <span className="font-semibold text-foreground">socials</span></p>
@@ -260,10 +248,6 @@ function Index() {
           <div className="mt-8 grid gap-10 lg:grid-cols-[minmax(0,1fr)_220px] lg:items-start">
             <MessageForm />
             <div className="flex flex-wrap gap-3 lg:flex-col lg:items-stretch">
-              <a href="/Prakash-Meena-Resume.pdf" download="Prakash-Meena-Resume.pdf" className="group inline-flex items-center gap-2 rounded-lg border border-border px-4 py-2 text-sm transition-all hover:-translate-y-0.5 hover:border-primary/50 hover:bg-accent">
-                <Download className="h-4 w-4 transition-transform group-hover:scale-110 group-hover:text-primary" />
-                Resume (PDF)
-              </a>
               {socials.map((s) => (
                 <a key={s.label} href={s.href} target="_blank" rel="noreferrer" className="group inline-flex items-center gap-2 rounded-lg border border-border px-4 py-2 text-sm transition-all hover:-translate-y-0.5 hover:border-primary/50 hover:bg-accent">
                   <s.Icon className="h-4 w-4 transition-transform group-hover:scale-110 group-hover:text-primary" />
