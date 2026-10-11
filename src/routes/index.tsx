@@ -155,7 +155,7 @@ function Index() {
           <div>
             {experiences.map((e, i) => (
               <Reveal key={e.org} delay={i * 100}>
-                <ExperienceItem e={e} isLast={i === experiences.length - 1} />
+                <ExperienceItem e={e} />
               </Reveal>
             ))}
           </div>
@@ -253,15 +253,21 @@ function Index() {
 
 type Experience = (typeof experiences)[number];
 
-function ExperienceItem({ e, isLast }: { e: Experience; isLast: boolean }) {
+function ExperienceItem({ e }: { e: Experience }) {
   const [open, setOpen] = useState(false);
   const [logoFailed, setLogoFailed] = useState(false);
-  const hasDetails = e.metrics.length > 0 || e.points.length > 0;
+  const detailsId = `experience-${e.mark.toLowerCase()}`;
 
   return (
-    <article className="group relative grid grid-cols-[40px_minmax(0,1fr)] gap-4 pb-8 sm:grid-cols-[44px_minmax(0,1fr)] sm:gap-5" aria-label={`${e.role} at ${e.org}`}>
-      <div className="relative">
-        <div className="relative z-10 flex h-10 w-10 items-center justify-center overflow-hidden rounded-lg border border-border bg-card font-mono text-sm font-semibold transition-colors duration-300 group-hover:bg-accent sm:h-11 sm:w-11">
+    <article className="border-b border-dashed border-border" aria-label={`${e.role} at ${e.org}`}>
+      <Button
+        variant="ghost"
+        onClick={() => setOpen((v) => !v)}
+        aria-expanded={open}
+        aria-controls={detailsId}
+        className="grid h-auto w-full grid-cols-[40px_minmax(0,1fr)_16px] items-start gap-x-3 gap-y-1 whitespace-normal rounded-none px-0 py-5 text-left sm:grid-cols-[40px_minmax(0,1fr)_auto_16px] sm:items-center sm:gap-x-4"
+      >
+        <span className="row-span-2 flex h-10 w-10 items-center justify-center overflow-hidden rounded-lg border border-border bg-card font-mono text-sm font-semibold shadow-sm sm:row-span-1">
           {logoFailed ? (
             <span aria-hidden="true">{e.mark}</span>
           ) : (
@@ -275,26 +281,25 @@ function ExperienceItem({ e, isLast }: { e: Experience; isLast: boolean }) {
               className="h-full w-full object-contain p-1.5"
             />
           )}
-        </div>
-        {!isLast && <div aria-hidden="true" className="absolute bottom-0 left-1/2 top-12 w-px bg-border" />}
-      </div>
-      <div className="min-w-0 border-b border-border pb-8">
-        <div className="flex flex-col items-start justify-between gap-2 sm:flex-row">
-          <div>
-            <h3 className="text-sm font-semibold sm:text-base">{e.role}</h3>
-            <p className="mt-1 text-sm text-muted-foreground">{e.org} · Internship</p>
-          </div>
-          <div className="shrink-0 text-xs leading-relaxed text-muted-foreground sm:text-right">
-            <div>{e.date}</div>
-            <div>{e.place}</div>
-          </div>
-        </div>
+        </span>
+        <span className="min-w-0">
+          <span className="block text-sm font-semibold sm:text-base">{e.role}</span>
+          <span className="mt-1 block text-xs font-normal text-muted-foreground sm:text-sm">{e.org}</span>
+        </span>
+        <span className="col-start-2 row-start-2 text-xs font-normal leading-relaxed sm:col-start-3 sm:row-start-1 sm:text-right">
+          <span className="block">{e.date}</span>
+          <span className="block text-muted-foreground">{e.place}</span>
+        </span>
+        <ChevronDown aria-hidden="true" className={`col-start-3 row-start-1 mt-1 text-muted-foreground transition-transform duration-200 motion-reduce:transition-none sm:col-start-4 sm:mt-0 ${open ? "rotate-180" : ""}`} />
+      </Button>
 
         <div
-          className={`grid transition-all duration-500 ease-in-out ${open ? "mt-0 grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"}`}
+          id={detailsId}
+          className={`grid transition-[grid-template-rows,opacity] duration-300 ease-in-out motion-reduce:transition-none ${open ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"}`}
           aria-hidden={!open}
         >
           <div className="overflow-hidden">
+            <div className="pb-5 pl-[52px] sm:pl-14">
             {e.metrics.length > 0 && (
               <div className="mt-5 flex flex-wrap gap-6">
                 {e.metrics.map((m) => (
@@ -312,27 +317,14 @@ function ExperienceItem({ e, isLast }: { e: Experience; isLast: boolean }) {
                 ))}
               </ul>
             )}
-          </div>
-        </div>
-
-        <div className="mt-5 flex flex-wrap items-center gap-2">
+        <div className="mt-4 flex flex-wrap items-center gap-2">
           {e.tags.map((t) => (
             <Tag key={t}>{t}</Tag>
           ))}
         </div>
-
-        {hasDetails && (
-          <button
-            type="button"
-            onClick={() => setOpen((v) => !v)}
-            aria-expanded={open}
-            className="mt-4 inline-flex items-center gap-1.5 rounded-md text-xs font-medium text-muted-foreground transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-          >
-            {open ? "Show less" : "Show more"}
-            <ChevronDown className={`h-3.5 w-3.5 transition-transform duration-300 ${open ? "rotate-180" : ""}`} />
-          </button>
-        )}
-      </div>
+            </div>
+          </div>
+        </div>
     </article>
   );
 }
