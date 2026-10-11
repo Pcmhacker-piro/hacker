@@ -70,10 +70,8 @@ function Clock() {
 
 function SectionTitle({ id, children }: { id: string; children: string }) {
   return (
-    <h2 id={id} className="mb-6 flex scroll-mt-24 items-center gap-3 font-mono text-xs uppercase tracking-[0.25em] text-muted-foreground">
-      <span aria-hidden="true" className="h-1.5 w-1.5 rounded-full bg-gradient-primary shadow-glow" />
+    <h2 id={id} className="mb-6 scroll-mt-24 font-display text-xl font-bold tracking-tight text-foreground">
       {children}
-      <span aria-hidden="true" className="h-px flex-1 bg-gradient-to-r from-border to-transparent" />
     </h2>
   );
 }
@@ -88,65 +86,71 @@ function Tag({ children }: { children: string }) {
 
 function Index() {
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div className="min-h-screen overflow-x-clip bg-background text-foreground">
       <SideIndex />
 
-      <main className="mx-auto max-w-3xl px-6">
-        <section className="animate-float-in pt-8 pb-16">
+      <main className="rail-main mx-auto max-w-3xl px-4 sm:px-5">
+        <section className="animate-float-in pb-8">
           <HeroBanner />
-          <div className="mt-4 flex items-center justify-end gap-2">
-            <Button asChild variant="ghost" size="sm"><Link to="/linkedin">Profile <ArrowUpRight /></Link></Button>
-            <CommandPalette />
-            <ThemeToggle />
-          </div>
-          <div className="mb-8 flex items-center justify-between text-xs text-muted-foreground">
-            <span className="flex items-center gap-2 rounded-full border border-primary/30 bg-primary/5 px-3 py-1 font-medium text-primary shadow-elegant">
-              <span className="h-2 w-2 animate-pulse rounded-full bg-primary shadow-glow" /> Open to internships
-            </span>
-            <Clock />
-          </div>
-          <div className="flex items-center gap-5">
-            <div className="relative">
-              <div aria-hidden="true" className="absolute -inset-1 rounded-2xl bg-gradient-primary opacity-40 blur-md" />
-              <div className="relative h-20 w-20 overflow-hidden rounded-2xl border border-border bg-card shadow-elegant">
-                <img src={avatar.url} alt="Prakash Meena" width={80} height={80} className="h-full w-full object-cover" />
-              </div>
+          <div className="rail-row relative flex items-center gap-4 py-3">
+            <div className="h-[88px] w-[88px] shrink-0 overflow-hidden rounded-xl border border-border bg-card p-1 shadow-elegant">
+              <img src={avatar.url} alt="Prakash Meena" width={80} height={80} className="h-full w-full rounded-lg object-cover" />
             </div>
-            <div>
-              <h1 className="text-gradient font-display text-3xl font-extrabold tracking-tight sm:text-4xl">Prakash Meena</h1>
-              <p className="mt-1 text-muted-foreground">Full-Stack Engineer · Open Source · Competitive Programmer</p>
+            <div className="min-w-0 pt-4">
+              <h1 className="font-display text-2xl font-bold tracking-tight sm:text-[26px]">Prakash Meena</h1>
+              <p className="text-sm text-muted-foreground">Full-Stack Engineer · Open Source · CP</p>
+            </div>
+            <div className="absolute right-0 top-3 flex items-center gap-1">
+              <Button asChild variant="ghost" size="sm"><Link to="/linkedin">Profile <ArrowUpRight /></Link></Button>
+              <CommandPalette />
+              <ThemeToggle />
             </div>
           </div>
-          <p className="mt-8 text-lg leading-relaxed">
-            I build, break, and ship things — from component libraries to training platforms.
-          </p>
-          <ul className="mt-4 space-y-2 text-muted-foreground">
-            <li className="flex gap-2"><span className="text-primary">▹</span> CSE undergrad at IIIT Dharwad, Karnataka.</li>
-            <li className="flex gap-2"><span className="text-primary">▹</span> Ranked 28th globally in GSSoC 2026 among 43,000+ contributors.</li>
-            <li className="flex gap-2"><span className="text-primary">▹</span> Currently building Verdiqy and Novix UI.</li>
-          </ul>
-          <div className="mt-8 flex flex-wrap gap-3">
-            <a href="mailto:pcmeena511@gmail.com" className="rounded-lg bg-gradient-primary px-4 py-2 text-sm font-medium text-primary-foreground shadow-elegant transition-all hover:-translate-y-0.5 hover:shadow-glow">
-              Send an email
-            </a>
-            {socials.slice(0, 3).map((s) => (
-              <a key={s.label} href={s.href} target="_blank" rel="noreferrer" className="group inline-flex items-center gap-2 rounded-lg border border-border bg-card/60 px-4 py-2 text-sm backdrop-blur transition-all hover:-translate-y-0.5 hover:border-primary/50 hover:bg-accent hover:shadow-elegant">
-                <s.Icon className="h-4 w-4 transition-transform group-hover:scale-110 group-hover:text-primary" />
-                {s.label}
+
+          <div className="rail-row pt-6">
+            <div className="mb-5 flex flex-wrap items-center justify-between gap-2 text-xs text-muted-foreground">
+              <span className="flex items-center gap-2 rounded-full border border-primary/30 bg-primary/5 px-3 py-1 font-medium text-primary">
+                <span className="h-2 w-2 animate-pulse rounded-full bg-primary" /> Open to internships
+              </span>
+              <Clock />
+            </div>
+            <p className="text-[15px] leading-relaxed">
+              Full-stack engineer. I love building, breaking, and shipping things.
+            </p>
+            <ul className="mt-4 space-y-1.5 pl-4 text-[15px] text-muted-foreground">
+              <li className="list-disc">CSE undergrad at <strong className="font-semibold text-foreground">IIIT Dharwad</strong>, Karnataka.</li>
+              <li className="list-disc">Ranked <strong className="font-semibold text-foreground">28th globally</strong> in GSSoC 2026 among 43,000+ contributors.</li>
+              <li className="list-disc">Currently building <strong className="font-semibold text-foreground">Verdiqy</strong>, <strong className="font-semibold text-foreground">Novix UI</strong>, and more.</li>
+            </ul>
+            <div className="mt-6 flex flex-wrap gap-2">
+              <a href="mailto:pcmeena511@gmail.com" className="inline-flex items-center gap-2 rounded-md bg-primary px-3 py-1.5 text-sm font-medium text-primary-foreground shadow-elegant transition-all hover:-translate-y-0.5 hover:opacity-90">
+                Send an email
               </a>
-            ))}
-          </div>
-          <div className="mt-12 grid grid-cols-2 gap-3 sm:grid-cols-4">
-            {stats.map((s) => (
-              <div key={s.l} className="group rounded-xl border border-border bg-card p-4 shadow-elegant transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-glow">
-                <div className="text-gradient text-2xl font-semibold">{s.v}</div>
-                <div className="mt-1 text-xs text-muted-foreground">{s.l}</div>
-              </div>
-            ))}
+              <Link to="/projects" className="inline-flex items-center gap-2 rounded-md border border-border bg-card px-3 py-1.5 text-sm transition-all hover:-translate-y-0.5 hover:bg-accent">
+                View projects
+              </Link>
+            </div>
+            <p className="mt-6 text-sm text-muted-foreground">Here are my <span className="font-semibold text-foreground">socials</span></p>
+            <div className="mt-2 flex flex-wrap gap-2">
+              {socials.map((s) => (
+                <a key={s.label} href={s.href} target="_blank" rel="noreferrer" className="group inline-flex items-center gap-1.5 rounded-md border border-border bg-card px-3 py-1.5 text-xs transition-all hover:-translate-y-0.5 hover:bg-accent">
+                  <s.Icon className="h-3.5 w-3.5 transition-colors group-hover:text-primary" />
+                  {s.label}
+                </a>
+              ))}
+            </div>
+            <div className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-4">
+              {stats.map((s) => (
+                <div key={s.l} className="rounded-lg border border-border bg-card p-3 transition-all duration-300 hover:-translate-y-0.5 hover:border-primary/40">
+                  <div className="text-xl font-semibold">{s.v}</div>
+                  <div className="mt-0.5 text-xs text-muted-foreground">{s.l}</div>
+                </div>
+              ))}
+            </div>
           </div>
         </section>
 
-        <section className="py-12">
+        <section className="rail-row py-10">
           <SectionTitle id="experience">Experience</SectionTitle>
           <div>
             {experiences.map((e, i) => (
@@ -157,7 +161,7 @@ function Index() {
           </div>
         </section>
 
-        <section className="py-12">
+        <section className="rail-row py-10">
           <SectionTitle id="projects">Projects</SectionTitle>
           <div className="grid gap-6 sm:grid-cols-2">
             {projects.map((p, i) => (
@@ -177,7 +181,7 @@ function Index() {
           </div>
         </section>
 
-        <section className="py-12">
+        <section className="rail-row py-10">
           <SectionTitle id="open-source">Open source contributions</SectionTitle>
           <div className="divide-y divide-border overflow-hidden rounded-2xl border border-border bg-card shadow-elegant transition-shadow duration-300 hover:shadow-glow">
             {contributions.map((c) => (
@@ -199,7 +203,7 @@ function Index() {
           </div>
         </section>
 
-        <section className="py-12">
+        <section className="rail-row py-10">
           <SectionTitle id="skills">Skills</SectionTitle>
           <div className="space-y-1 rounded-2xl border border-border bg-card p-4 shadow-elegant sm:p-5">
             {Object.entries(skills).map(([k, v]) => (
@@ -215,7 +219,7 @@ function Index() {
           </div>
         </section>
 
-        <section className="py-12">
+        <section className="rail-row py-10">
           <SectionTitle id="education">Education</SectionTitle>
           <div className="rounded-2xl border border-border bg-card p-6 shadow-elegant transition-all duration-300 hover:-translate-y-0.5 hover:border-primary/40 hover:shadow-glow">
             <h3 className="font-semibold">IIIT Dharwad</h3>
@@ -223,7 +227,7 @@ function Index() {
           </div>
         </section>
 
-        <section className="py-16">
+        <section className="rail-row py-12">
           <SectionTitle id="contact">Contact</SectionTitle>
           <h3 className="text-gradient text-3xl font-semibold tracking-tight">Let's build something together.</h3>
           <p className="mt-2 text-muted-foreground">Dharwad, Karnataka, India · pcmeena511@gmail.com</p>
