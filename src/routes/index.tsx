@@ -239,6 +239,10 @@ function Index() {
           <div className="mt-8 grid gap-10 lg:grid-cols-[minmax(0,1fr)_220px] lg:items-start">
             <MessageForm />
             <div className="flex flex-wrap gap-3 lg:flex-col lg:items-stretch">
+              <a href="/Prakash-Meena-Resume.pdf" download="Prakash-Meena-Resume.pdf" className="group inline-flex items-center gap-2 rounded-lg border border-border px-4 py-2 text-sm transition-all hover:-translate-y-0.5 hover:border-primary/50 hover:bg-accent">
+                <Download className="h-4 w-4 transition-transform group-hover:scale-110 group-hover:text-primary" />
+                Resume (PDF)
+              </a>
               {socials.map((s) => (
                 <a key={s.label} href={s.href} target="_blank" rel="noreferrer" className="group inline-flex items-center gap-2 rounded-lg border border-border px-4 py-2 text-sm transition-all hover:-translate-y-0.5 hover:border-primary/50 hover:bg-accent">
                   <s.Icon className="h-4 w-4 transition-transform group-hover:scale-110 group-hover:text-primary" />
