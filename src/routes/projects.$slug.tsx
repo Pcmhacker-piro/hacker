@@ -12,8 +12,16 @@ export const Route = createFileRoute("/projects/$slug")({
   head: ({ loaderData: project }) => {
     const title = project ? `${project.name} — Prakash Meena` : "Project — Prakash Meena";
     const description = project
-      ? `${project.name}: ${project.tagline}. Live demo, source code and the stack behind the build.`
+      ? `${project.name}: ${project.tagline}. Live demo, source code and the story behind the build.`
       : "A project by Prakash Meena.";
+    const slugImage: Record<string, string> = {
+      verdiqy: "/og-verdiqy.jpg",
+      "novix-ui": "/og-novix-ui.jpg",
+    };
+    const image = project
+      ? slugImage[project.slug] ?? "/og.jpg"
+      : "/og.jpg";
+    const imageUrl = `https://id-preview--908b13f2-f384-4573-a580-f76d98d49879.lovable.app${image}`;
     return {
       meta: [
         { title },
@@ -21,7 +29,11 @@ export const Route = createFileRoute("/projects/$slug")({
         { property: "og:title", content: title },
         { property: "og:description", content: description },
         { property: "og:type", content: "website" },
-        { name: "twitter:card", content: "summary" },
+        { property: "og:image", content: imageUrl },
+        { property: "og:image:width", content: "1200" },
+        { property: "og:image:height", content: "630" },
+        { name: "twitter:image", content: imageUrl },
+        { name: "twitter:card", content: "summary_large_image" },
       ],
     };
   },
@@ -115,19 +127,6 @@ function ProjectDetail() {
           <p className="mt-3 text-[15px] leading-relaxed text-muted-foreground">{p.tagline}</p>
         </section>
 
-        <section className="rail-row pb-8">
-          <h3 className="font-display mb-3 text-sm font-bold uppercase tracking-wide text-muted-foreground">Stack used</h3>
-          <div className="flex flex-wrap gap-2">
-            {p.stack.map((t) => (
-              <span
-                key={t}
-                className="cursor-default rounded-lg border border-border bg-muted px-3 py-1.5 font-mono text-xs text-muted-foreground transition-all duration-200 hover:-translate-y-0.5 hover:border-primary/50 hover:bg-accent hover:text-foreground hover:shadow-elegant"
-              >
-                {t}
-              </span>
-            ))}
-          </div>
-        </section>
 
         <section className="rail-row pb-8">
           <h3 className="font-display mb-3 text-sm font-bold uppercase tracking-wide text-muted-foreground">What it does</h3>
