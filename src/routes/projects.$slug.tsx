@@ -115,19 +115,6 @@ function ProjectDetail() {
           <p className="mt-3 text-[15px] leading-relaxed text-muted-foreground">{p.tagline}</p>
         </section>
 
-        <section className="rail-row pb-8">
-          <h3 className="font-display mb-3 text-sm font-bold uppercase tracking-wide text-muted-foreground">Stack used</h3>
-          <div className="flex flex-wrap gap-2">
-            {p.stack.map((t) => (
-              <span
-                key={t}
-                className="cursor-default rounded-lg border border-border bg-muted px-3 py-1.5 font-mono text-xs text-muted-foreground transition-all duration-200 hover:-translate-y-0.5 hover:border-primary/50 hover:bg-accent hover:text-foreground hover:shadow-elegant"
-              >
-                {t}
-              </span>
-            ))}
-          </div>
-        </section>
 
         <section className="rail-row pb-8">
           <h3 className="font-display mb-3 text-sm font-bold uppercase tracking-wide text-muted-foreground">What it does</h3>
