@@ -79,13 +79,39 @@ export const Route = createFileRoute("/api/public/contact")({
           });
           return Response.json({ ok: true });
         } catch (error) {
+          const code = (error as { code?: string } | null)?.code;
+          const status = (error as { status?: number } | null)?.status;
+
+          // Expected while the sender domain is still verifying DNS or emails are paused.
+          if (code === "domain_not_verified" || code === "emails_disabled") {
+            console.warn("contact send skipped:", code);
+            return Response.json(
+              {
+                ok: false,
+                error:
+                  "The message box isn't live just yet — please email pcmeena511@gmail.com directly.",
+              },
+              { status: 503 },
+            );
+          }
+
+          if (status === 429) {
+            return Response.json(
+              {
+                ok: false,
+                error: "Lots of messages right now — please try again in a minute.",
+              },
+              { status: 429 },
+            );
+          }
+
           console.error("contact send failed", error);
           return Response.json(
             {
               ok: false,
               error: "Couldn't send right now — email pcmeena511@gmail.com instead.",
             },
-            { status: 502 },
+            { status: 503 },
           );
         }
       },
