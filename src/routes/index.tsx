@@ -2,7 +2,6 @@ import { stats, experiences, projects, contributions, skills } from "@/lib/portf
 import { Button } from "@/components/ui/button";
 import { Link, createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
-import { useServerFn } from "@tanstack/react-start";
 import type { MouseEvent as RMouseEvent } from "react";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { HeroBanner } from "@/components/HeroBanner";
