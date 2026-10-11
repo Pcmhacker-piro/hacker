@@ -4,8 +4,12 @@ import { ArrowLeft, Github, ArrowUpRight, Mail, Check } from "lucide-react";
 import { ThemeToggle } from "@/components/ThemeToggle";
 
 export const Route = createFileRoute("/projects/$slug")({
-  head: ({ params }) => {
+  loader: ({ params }) => {
     const project = projects.find((p) => p.slug === params.slug);
+    if (!project) throw notFound();
+    return project;
+  },
+  head: ({ loaderData: project }) => {
     const title = project ? `${project.name} — Prakash Meena` : "Project — Prakash Meena";
     const description = project
       ? `${project.name}: ${project.tagline}. Live demo, source code and the stack behind the build.`
@@ -21,18 +25,12 @@ export const Route = createFileRoute("/projects/$slug")({
       ],
     };
   },
-  beforeLoad: ({ params }): void => {
-    if (!projects.some((p) => p.slug === params.slug)) {
-      // eslint-disable-next-line @typescript-eslint/only-throw-error
-      throw notFound() as never;
-    }
-  },
   component: ProjectDetail,
 });
 
 function ProjectDetail() {
   const { slug } = Route.useParams();
-  const p = projects.find((x) => x.slug === slug)!;
+  const p = Route.useLoaderData();
 
   return (
     <div className="min-h-screen bg-background text-foreground">
