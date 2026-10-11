@@ -199,7 +199,7 @@ function SectionTitle({ id, children }: { id: string; children: string }) {
 
 function Tag({ children }: { children: string }) {
   return (
-    <span className="rounded-md border border-border bg-muted px-2 py-0.5 font-mono text-[11px] text-muted-foreground">
+    <span className="cursor-default rounded-md border border-border bg-muted px-2 py-0.5 font-mono text-[11px] text-muted-foreground transition-all duration-200 hover:-translate-y-0.5 hover:border-primary/50 hover:bg-accent hover:text-foreground hover:shadow-elegant">
       {children}
     </span>
   );
@@ -218,8 +218,8 @@ function Index() {
             <ThemeToggle />
           </div>
           <div className="mb-8 flex items-center justify-between text-xs text-muted-foreground">
-            <span className="flex items-center gap-2">
-              <span className="h-2 w-2 animate-pulse rounded-full bg-primary" /> Open to internships
+            <span className="flex items-center gap-2 rounded-full border border-primary/30 bg-primary/5 px-3 py-1 font-medium text-primary shadow-elegant">
+              <span className="h-2 w-2 animate-pulse rounded-full bg-primary shadow-glow" /> Open to internships
             </span>
             <Clock />
           </div>
@@ -289,7 +289,7 @@ function Index() {
 
         <section className="py-12">
           <SectionTitle id="open-source">Open source contributions</SectionTitle>
-          <div className="divide-y divide-border rounded-2xl border border-border bg-card">
+          <div className="divide-y divide-border overflow-hidden rounded-2xl border border-border bg-card shadow-elegant transition-shadow duration-300 hover:shadow-glow">
             {contributions.map((c) => (
               <a
                 key={c.pr}
@@ -311,9 +311,9 @@ function Index() {
 
         <section className="py-12">
           <SectionTitle id="skills">Skills</SectionTitle>
-          <div className="space-y-4">
+          <div className="space-y-1 rounded-2xl border border-border bg-card p-4 shadow-elegant sm:p-5">
             {Object.entries(skills).map(([k, v]) => (
-              <div key={k} className="grid gap-2 sm:grid-cols-[140px_1fr]">
+              <div key={k} className="grid gap-2 rounded-xl p-2 transition-colors hover:bg-accent/40 sm:grid-cols-[140px_1fr]">
                 <div className="text-sm text-muted-foreground">{k}</div>
                 <div className="flex flex-wrap gap-2">
                   {v.map((s) => (
@@ -348,8 +348,10 @@ function Index() {
         </section>
       </main>
 
-      <footer className="border-t border-border py-8 text-center text-xs text-muted-foreground">
-        © 2026 Prakash Meena
+      <footer className="relative py-10 text-center text-xs text-muted-foreground">
+        <div aria-hidden="true" className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
+        <span className="text-gradient font-medium">© 2026 Prakash Meena</span>
+        <span className="mt-1 block text-[11px]">Designed & built with care · Dharwad, India</span>
       </footer>
     </div>
   );
