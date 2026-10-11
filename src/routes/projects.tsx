@@ -53,71 +53,33 @@ function ProjectsPage() {
           Everything I've designed, built and shipped — live demos, source code and the stack behind each one.
         </p>
 
-        <div className="mt-10 space-y-8">
+        <div className="mt-10 grid grid-cols-1 border-y border-dashed border-border sm:grid-cols-2">
           {projects.map((p, i) => (
             <article
               key={p.name}
-              className="group overflow-hidden rounded-2xl border border-border bg-card shadow-elegant transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-glow"
-              style={{ animationDelay: `${i * 120}ms` }}
+              className={`group flex flex-col p-4 sm:p-5 ${i % 2 === 0 ? "sm:border-r sm:border-dashed sm:border-border" : ""} ${i >= 2 ? "border-t border-dashed border-border" : ""} ${i === 1 ? "border-t border-dashed border-border sm:border-t-0" : ""}`}
             >
-              <div className="relative overflow-hidden">
-                <img
-                  src={p.img}
-                  alt={`${p.name} preview`}
-                  width={1280}
-                  height={720}
-                  className="aspect-[16/7] w-full object-cover object-top transition-transform duration-700 group-hover:scale-[1.03]"
-                />
-                <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-card via-transparent to-transparent" />
+              <a href={p.live} target="_blank" rel="noreferrer" className="block rounded-2xl border border-border bg-muted/40 p-4 shadow-sm transition-all duration-300 group-hover:-translate-y-0.5 group-hover:shadow-elegant">
+                <div className="overflow-hidden rounded-lg">
+                  <img src={p.img} alt={`${p.name} preview`} width={1280} height={720} loading="lazy" className="aspect-[16/10] w-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.04]" />
+                </div>
+              </a>
+              <div className="mt-4 flex items-center justify-between gap-2">
+                <h2 className="font-semibold tracking-tight">{p.name}</h2>
+                <span className="inline-flex items-center gap-1.5 rounded-full border border-border bg-background px-2.5 py-0.5 text-xs text-muted-foreground">
+                  <span className="h-1.5 w-1.5 rounded-full bg-primary" /> Live
+                </span>
               </div>
-              <div className="p-6 pt-4">
-                <div className="flex flex-wrap items-center justify-between gap-3">
-                  <h2 className="text-xl font-semibold tracking-tight">{p.name}</h2>
-                  <span className="inline-flex items-center gap-1.5 rounded-full border border-border bg-background px-3 py-1 text-xs font-medium">
-                    <span className="relative flex h-2 w-2">
-                      <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-60" />
-                      <span className="relative inline-flex h-2 w-2 rounded-full bg-primary" />
-                    </span>
-                    Live
-                  </span>
-                </div>
-                <p className="mt-1 text-sm text-muted-foreground">{p.tagline}</p>
-                <div className="mt-4 flex flex-wrap gap-1.5">
-                  {p.stack.map((s) => (
-                    <span
-                      key={s}
-                      className="rounded-md border border-border bg-muted px-2 py-0.5 font-mono text-[11px] text-muted-foreground"
-                    >
-                      {s}
-                    </span>
+              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{p.tagline}</p>
+              <div className="mt-auto flex items-end justify-between gap-3 pt-4">
+                <div className="flex flex-wrap gap-1">
+                  {p.stack.map((t) => (
+                    <span key={t} className="rounded border border-border bg-muted px-1.5 py-0.5 font-mono text-[10px] text-muted-foreground">{t}</span>
                   ))}
                 </div>
-                <ul className="mt-4 space-y-2 text-sm leading-relaxed text-muted-foreground">
-                  {p.points.map((pt) => (
-                    <li key={pt} className="flex gap-2">
-                      <span className="text-primary">▹</span>
-                      {pt}
-                    </li>
-                  ))}
-                </ul>
-                <div className="mt-5 flex flex-wrap items-center gap-2">
-                  <a
-                    href={p.live}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="inline-flex items-center gap-1.5 rounded-md border border-foreground bg-foreground px-3.5 py-1.5 text-xs font-medium text-background transition-transform hover:-translate-y-0.5"
-                  >
-                    View Live <ArrowUpRight className="h-3.5 w-3.5" />
-                  </a>
-                  <a
-                    href={p.code}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="inline-flex items-center gap-1.5 rounded-md border border-border bg-background px-3.5 py-1.5 text-xs font-medium text-foreground transition-transform hover:-translate-y-0.5 hover:border-primary/50"
-                  >
-                    <Github className="h-3.5 w-3.5" /> Source
-                  </a>
-                </div>
+                <a href={p.live} target="_blank" rel="noreferrer" className="inline-flex shrink-0 items-center gap-1 text-sm font-medium text-foreground/80 hover:text-foreground">
+                  View Project <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                </a>
               </div>
             </article>
           ))}
