@@ -32,7 +32,7 @@ export function HeroBanner() {
         alt="A knight resting in a field of flowers under a bright sky"
         width={1920}
         height={640}
-        className="h-48 w-full object-cover transition-transform duration-[2500ms] ease-out motion-safe:group-hover:scale-[1.03] sm:h-64"
+        className="h-48 w-full object-cover brightness-[0.85] saturate-[0.92] transition-transform duration-[2500ms] ease-out motion-safe:group-hover:scale-[1.03] dark:brightness-100 dark:saturate-100 sm:h-64"
       />
       <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-0 h-[55%]">
         {animate && <Suspense fallback={null}><SkyStars /></Suspense>}
