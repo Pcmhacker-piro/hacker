@@ -253,3 +253,17 @@ html body a[href^="https://lovable.dev/projects"] {
   background-clip: text;
   color: transparent;
 }
+
+/* Reference-style dotted rails */
+.rail-main { position: relative; }
+.rail-main::before, .rail-main::after {
+  content: ""; position: absolute; top: 0; bottom: 0; width: 0;
+  border-left: 1px dashed var(--border); pointer-events: none;
+}
+.rail-main::before { left: 0; }
+.rail-main::after { right: 0; }
+.rail-row { position: relative; }
+.rail-row::before {
+  content: ""; position: absolute; top: 0; left: 50%; width: 100vw;
+  transform: translateX(-50%); border-top: 1px dashed var(--border); pointer-events: none;
+}
