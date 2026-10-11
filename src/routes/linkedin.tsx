@@ -1,3 +1,4 @@
+import avatar from "@/assets/prakash.png.asset.json";
 import * as React from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowLeft, Copy, Check, Mail, Github, Linkedin, MapPin } from "lucide-react";
@@ -65,8 +66,8 @@ function ProfilePage() {
         <section className="overflow-hidden rounded-xl border border-border bg-card shadow-sm">
           <div className="h-36 bg-gradient-primary sm:h-48" />
           <div className="px-6 pb-6">
-            <div className="-mt-14 flex h-28 w-28 items-center justify-center rounded-full border-4 border-card bg-primary text-3xl font-bold text-primary-foreground shadow-elegant">
-              PM
+            <div className="-mt-14 h-28 w-28 overflow-hidden rounded-full border-4 border-card bg-card shadow-elegant">
+              <img src={avatar.url} alt="Prakash Meena" width={112} height={112} className="h-full w-full object-cover" />
             </div>
             <h1 className="mt-3 text-2xl font-bold">Prakash Meena</h1>
             <p className="text-foreground/90">

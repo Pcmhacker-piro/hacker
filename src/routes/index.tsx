@@ -1,3 +1,4 @@
+import avatar from "@/assets/prakash.png.asset.json";
 import { stats, experiences, projects, contributions, skills } from "@/lib/portfolio-data";
 import { Button } from "@/components/ui/button";
 import { Link, createFileRoute } from "@tanstack/react-router";
@@ -107,8 +108,8 @@ function Index() {
           <div className="flex items-center gap-5">
             <div className="relative">
               <div aria-hidden="true" className="absolute -inset-1 rounded-2xl bg-gradient-primary opacity-40 blur-md" />
-              <div className="relative flex h-20 w-20 items-center justify-center rounded-2xl border border-border bg-card font-mono text-2xl font-semibold text-primary shadow-elegant">
-                PM
+              <div className="relative h-20 w-20 overflow-hidden rounded-2xl border border-border bg-card shadow-elegant">
+                <img src={avatar.url} alt="Prakash Meena" width={80} height={80} className="h-full w-full object-cover" />
               </div>
             </div>
             <div>
