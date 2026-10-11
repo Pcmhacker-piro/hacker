@@ -60,9 +60,14 @@ export const Route = createFileRoute("/api/public/contact")({
         }
 
         const { name, email, message } = parsed.data;
-        const idempotencyKey = `contact-${createHash("sha256")
-          .update(`${name}|${email}|${message}`)
-          .digest("hex")
+        const digest = await crypto.subtle.digest(
+          "SHA-256",
+          new TextEncoder().encode(`${name}|${email}|${message}`),
+        );
+        const idempotencyKey = `contact-${Array.from(new Uint8Array(digest), (b) =>
+          b.toString(16).padStart(2, "0"),
+        )
+          .join("")
           .slice(0, 24)}`;
 
         try {
