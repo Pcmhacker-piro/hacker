@@ -138,11 +138,6 @@ function Index() {
               <li className="list-disc">CSE undergrad at <strong className="font-semibold text-foreground">IIIT Dharwad</strong>, Karnataka.</li>
               <li className="list-disc">Ranked <strong className="font-semibold text-foreground">28th globally</strong> in GSSoC 2026 among 43,000+ contributors.</li>
             </ul>
-            <div className="mt-6 flex flex-wrap gap-2">
-              <a href="mailto:pcmeena511@gmail.com" className="inline-flex items-center gap-2 rounded-md bg-primary px-3 py-1.5 text-sm font-medium text-primary-foreground shadow-elegant transition-all hover:-translate-y-0.5 hover:opacity-90">
-                Send an email
-              </a>
-            </div>
             <p className="mt-6 text-sm text-muted-foreground">Here are my <span className="font-semibold text-foreground">socials</span></p>
             <div className="mt-2 flex flex-wrap gap-2">
               {socials.map((s) => (
