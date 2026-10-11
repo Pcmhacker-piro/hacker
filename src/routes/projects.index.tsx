@@ -3,7 +3,7 @@ import { projects } from "@/lib/portfolio-data";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, ArrowUpRight, Github } from "lucide-react";
 
-export const Route = createFileRoute("/projects")({
+export const Route = createFileRoute("/projects/")({
   head: () => ({
     meta: [
       { title: "Projects — Prakash Meena" },
