@@ -270,6 +270,7 @@ function Index() {
 
         <section className="py-12">
           <SectionTitle id="projects">Projects</SectionTitle>
+          <ProjectFinder />
           <div className="grid gap-6 sm:grid-cols-2">
             {projects.map((p, i) => (
               <Reveal key={p.name} delay={i * 120}>
