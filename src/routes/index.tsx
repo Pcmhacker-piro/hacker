@@ -10,7 +10,7 @@ import { HeroBanner } from "@/components/HeroBanner";
 import { CopyEmailButton } from "@/components/CopyEmailButton";
 import { Reveal } from "@/components/Reveal";
 import { MessageForm } from "@/components/MessageForm";
-import { Github, Linkedin, Twitter, Mail, ChevronDown, ArrowUpRight, Command, Moon, Sun, Copy, Sparkles, Loader2 } from "lucide-react";
+import { Github, Linkedin, Twitter, Instagram, Mail, ChevronDown, ArrowUpRight, Command, Moon, Sun, Copy, Sparkles, Loader2 } from "lucide-react";
 import {
   CommandDialog,
   CommandEmpty,
@@ -63,6 +63,7 @@ const socials = [
   { label: "GitHub", href: "https://github.com/Pcmhacker-piro", Icon: Github },
   { label: "LinkedIn", href: "https://linkedin.com/in/prakash-meena-a46906324", Icon: Linkedin },
   { label: "X", href: "https://x.com/pcmeena511", Icon: Twitter },
+  { label: "Instagram", href: "https://www.instagram.com/prakash_meena1307/", Icon: Instagram },
   { label: "Email", href: "mailto:pcmeena511@gmail.com", Icon: Mail },
 ];
 
