@@ -141,14 +141,14 @@ function Index() {
               <li className="list-disc">CSE undergrad at <strong className="font-semibold text-foreground">IIIT Dharwad</strong>, Karnataka.</li>
               <li className="list-disc">Ranked <strong className="font-semibold text-foreground">28th globally</strong> in GSSoC 2026 among 43,000+ contributors.</li>
             </ul>
-            <p className="mt-6 text-sm text-muted-foreground">Here are my <span className="font-semibold text-foreground">socials</span></p>
-            <div className="mt-2 flex flex-wrap gap-2">
-              {socials.map((s) => (
-                <a key={s.label} href={s.href} target="_blank" rel="noreferrer" className="group inline-flex items-center gap-1.5 rounded-md border border-border bg-card px-3 py-1.5 text-xs shadow-sm transition-all hover:-translate-y-0.5 hover:border-primary/40 hover:bg-accent hover:shadow-elegant">
-                  <s.Icon className="h-3.5 w-3.5 transition-colors group-hover:text-primary" />
-                  {s.label}
-                </a>
-              ))}
+            <div className="mt-6">
+              <h2 className="text-sm font-semibold text-foreground">About me</h2>
+              <p className="mt-2 text-[15px] leading-relaxed text-muted-foreground">
+                I'm a Computer Science student at IIIT Dharwad who learned to code by solving problems — 700+ of them on LeetCode.
+                Today I build full-stack products like Verdiqy, a training platform for competitive programmers, and Novix UI, a React component library.
+                Open source is where I grow fastest: contributing to real codebases put me among the top 0.1% in GSSoC 2026.
+                I'm looking for internships where I can ship backend and full-stack work that people actually use.
+              </p>
             </div>
             <div className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-4">
               {stats.map((s) => (
