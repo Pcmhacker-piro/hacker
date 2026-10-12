@@ -45,8 +45,7 @@ function Calendar() {
               <div className="github-calendar-week" key={index}>
                 <span className="github-calendar-month" aria-hidden="true">{labels[index]}</span>
                 {week.map((day, row) => day ? (
-                  <a key={day.date} className={`github-calendar-day github-level-${day.level}`} tabIndex={-1}
-                    href={`${PROFILE}&from=${day.date}&to=${day.date}`} target="_blank" rel="noreferrer"
+                  <span key={day.date} className={`github-calendar-day github-level-${day.level}`}
                     title={`${day.count} ${day.count === 1 ? "contribution" : "contributions"} on ${new Date(`${day.date}T00:00:00Z`).toLocaleDateString("en", { month: "long", day: "numeric", year: "numeric", timeZone: "UTC" })}`}
                     aria-label={`${day.date}: ${day.count} contributions`} />
                 ) : <span key={`empty-${row}`} className="github-calendar-day invisible" />)}
