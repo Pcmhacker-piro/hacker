@@ -1,7 +1,6 @@
 import avatar from "@/assets/prakash.png.asset.json";
 import { stats, experiences, projects, contributions, skills } from "@/lib/portfolio-data";
 import { LivePRStrip } from "@/components/LivePRStrip";
-import { GitHubHeatmap } from "@/components/GitHubHeatmap";
 import { Button } from "@/components/ui/button";
 import { Link, createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
@@ -196,7 +195,6 @@ function Index() {
         <section className="rail-row py-10">
           <SectionTitle id="open-source">Open source contributions</SectionTitle>
           <LivePRStrip />
-          <GitHubHeatmap />
           <div className="divide-y divide-border overflow-hidden rounded-2xl border border-border bg-card shadow-elegant transition-shadow duration-300 hover:shadow-glow">
             {contributions.map((c) => (
               <a
