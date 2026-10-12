@@ -108,12 +108,15 @@ export const Route = createFileRoute("/api/public/contact")({
           .slice(0, 24)}`;
 
         try {
-          const { sendTemplateEmail } = await import("@/lib/email-templates/send-email");
-          await sendTemplateEmail("contact-notification", email, {
-            templateData: { name, email, message },
-            idempotencyKey,
-            replyTo: email,
-          });
+          const sentViaResend = await sendViaResend(name, email, message);
+          if (!sentViaResend) {
+            const { sendTemplateEmail } = await import("@/lib/email-templates/send-email");
+            await sendTemplateEmail("contact-notification", email, {
+              templateData: { name, email, message },
+              idempotencyKey,
+              replyTo: email,
+            });
+          }
           return Response.json({ ok: true });
         } catch (error) {
           const code = (error as { code?: string } | null)?.code;
