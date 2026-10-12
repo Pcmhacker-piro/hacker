@@ -35,7 +35,9 @@ function escapeHtml(value: string) {
 }
 
 async function sendViaResend(name: string, email: string, message: string) {
-  const apiKey = process.env["RESEND_API_KEY"];
+  // RESEND_KEY is user-managed; RESEND_API_KEY may be an auto-provisioned
+  // connector secret that is not a valid Resend API key.
+  const apiKey = process.env["RESEND_KEY"] ?? process.env["RESEND_API_KEY"];
   if (!apiKey) return false;
 
   const response = await fetch("https://api.resend.com/emails", {
