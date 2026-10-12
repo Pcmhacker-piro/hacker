@@ -1,6 +1,6 @@
 import { Suspense } from "react";
 import { useSuspenseQuery } from "@tanstack/react-query";
-import { ArrowUpRight, Github } from "lucide-react";
+import { Github } from "lucide-react";
 import { getGitHubActivity } from "@/lib/github-activity.functions";
 import type { ContributionDay } from "@/lib/github-activity.functions";
 
