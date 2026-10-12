@@ -10,3 +10,4 @@
 - [x] Site-wide copy email button with a "Copied!" toast (header + contact section).
 - [x] Footer "Built with" line under the copyright.
 - [ ] Waiting on user: add the DNS records for notify.novixui.com at the domain provider (shown in Cloud → Emails). Delivery starts automatically once verified.
+- [ ] Vercel deploy: push the code to the user's own GitHub repo, connect it in Vercel, add LOVABLE_API_KEY as an env var, then point the link-preview images at the live Vercel domain.
