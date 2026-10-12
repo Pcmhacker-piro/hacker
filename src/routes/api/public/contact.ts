@@ -24,6 +24,43 @@ function isRateLimited(ip: string) {
   return false;
 }
 
+const NOTIFY_EMAIL = "pcmeena511@gmail.com";
+
+function escapeHtml(value: string) {
+  return value
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
+}
+
+async function sendViaResend(name: string, email: string, message: string) {
+  const apiKey = process.env.RESEND_API_KEY;
+  if (!apiKey) return false;
+
+  const response = await fetch("https://api.resend.com/emails", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${apiKey}`,
+    },
+    body: JSON.stringify({
+      from: "Portfolio Contact <onboarding@resend.dev>",
+      to: [NOTIFY_EMAIL],
+      reply_to: email,
+      subject: `New message from ${name}`,
+      html: `<p><strong>Name:</strong> ${escapeHtml(name)}</p><p><strong>Email:</strong> ${escapeHtml(email)}</p><p><strong>Message:</strong></p><p>${escapeHtml(message).replace(/\n/g, "<br/>")}</p>`,
+    }),
+  });
+
+  if (!response.ok) {
+    const errorBody = await response.text();
+    console.error(`Resend request failed [${response.status}]: ${errorBody}`);
+    throw new Error(`Resend request failed [${response.status}]: ${errorBody}`);
+  }
+  return true;
+}
+
 export const Route = createFileRoute("/api/public/contact")({
   server: {
     handlers: {
@@ -71,12 +108,15 @@ export const Route = createFileRoute("/api/public/contact")({
           .slice(0, 24)}`;
 
         try {
-          const { sendTemplateEmail } = await import("@/lib/email-templates/send-email");
-          await sendTemplateEmail("contact-notification", email, {
-            templateData: { name, email, message },
-            idempotencyKey,
-            replyTo: email,
-          });
+          const sentViaResend = await sendViaResend(name, email, message);
+          if (!sentViaResend) {
+            const { sendTemplateEmail } = await import("@/lib/email-templates/send-email");
+            await sendTemplateEmail("contact-notification", email, {
+              templateData: { name, email, message },
+              idempotencyKey,
+              replyTo: email,
+            });
+          }
           return Response.json({ ok: true });
         } catch (error) {
           const code = (error as { code?: string } | null)?.code;
