@@ -90,7 +90,8 @@ function Clock() {
 
 function SectionTitle({ id, children }: { id: string; children: string }) {
   return (
-    <h2 id={id} className="mb-6 scroll-mt-24 font-display text-xl font-bold tracking-tight text-foreground">
+    <h2 id={id} className="mb-6 flex scroll-mt-24 items-center gap-2.5 font-display text-xl font-bold tracking-tight text-foreground">
+      <span aria-hidden="true" className="h-3.5 w-1 rounded-full bg-gradient-to-b from-primary to-primary-glow shadow-glow" />
       {children}
     </h2>
   );
@@ -129,7 +130,7 @@ function Index() {
 
           <div className="rail-row pt-6">
             <div className="mb-5 flex flex-wrap items-center justify-between gap-2 text-xs text-muted-foreground">
-              <span className="flex items-center gap-2 rounded-full border border-primary/30 bg-primary/5 px-3 py-1 font-medium text-primary">
+              <span className="flex items-center gap-2 rounded-full border border-primary/30 bg-primary/5 px-3 py-1 font-medium text-primary shadow-sm">
                 <span className="h-2 w-2 animate-pulse rounded-full bg-primary" /> Open to internships
               </span>
               <Clock />
@@ -144,7 +145,7 @@ function Index() {
             <p className="mt-6 text-sm text-muted-foreground">Here are my <span className="font-semibold text-foreground">socials</span></p>
             <div className="mt-2 flex flex-wrap gap-2">
               {socials.map((s) => (
-                <a key={s.label} href={s.href} target="_blank" rel="noreferrer" className="group inline-flex items-center gap-1.5 rounded-md border border-border bg-card px-3 py-1.5 text-xs transition-all hover:-translate-y-0.5 hover:bg-accent">
+                <a key={s.label} href={s.href} target="_blank" rel="noreferrer" className="group inline-flex items-center gap-1.5 rounded-md border border-border bg-card px-3 py-1.5 text-xs shadow-sm transition-all hover:-translate-y-0.5 hover:border-primary/40 hover:bg-accent hover:shadow-elegant">
                   <s.Icon className="h-3.5 w-3.5 transition-colors group-hover:text-primary" />
                   {s.label}
                 </a>
@@ -152,8 +153,8 @@ function Index() {
             </div>
             <div className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-4">
               {stats.map((s) => (
-                <div key={s.l} className="rounded-lg border border-border bg-card p-3 transition-all duration-300 hover:-translate-y-0.5 hover:border-primary/40">
-                  <div className="text-xl font-semibold">{s.v}</div>
+                <div key={s.l} className="rounded-lg border border-border bg-card p-3 shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-primary/40 hover:shadow-elegant">
+                  <div className="text-xl font-semibold tracking-tight">{s.v}</div>
                   <div className="mt-0.5 text-xs text-muted-foreground">{s.l}</div>
                 </div>
               ))}
