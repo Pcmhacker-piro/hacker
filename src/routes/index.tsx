@@ -1,4 +1,4 @@
-import avatar from "@/assets/prakash.png.asset.json";
+import avatar from "@/assets/prakash.png";
 import { stats, experiences, projects, contributions, skills } from "@/lib/portfolio-data";
 import { LivePRStrip } from "@/components/LivePRStrip";
 import { Button } from "@/components/ui/button";
@@ -115,7 +115,7 @@ function Index() {
           <HeroBanner />
           <div className="rail-row relative flex items-center gap-4 py-3">
             <div className="h-[88px] w-[88px] shrink-0 overflow-hidden rounded-xl border border-border bg-card p-1 shadow-elegant">
-              <img src={avatar.url} alt="Prakash Meena" width={80} height={80} className="h-full w-full rounded-lg object-cover" />
+              <img src={avatar} alt="Prakash Meena" width={80} height={80} className="h-full w-full rounded-lg object-cover" />
             </div>
             <div className="min-w-0 pt-4">
               <h1 className="font-display text-2xl font-bold tracking-tight sm:text-[26px]">Prakash Meena</h1>
