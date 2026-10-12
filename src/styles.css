@@ -67,6 +67,11 @@
 }
 
 :root {
+  --contribution-0: oklch(0.95 0.005 150);
+  --contribution-1: oklch(0.88 0.1 150);
+  --contribution-2: oklch(0.73 0.16 150);
+  --contribution-3: oklch(0.59 0.16 150);
+  --contribution-4: oklch(0.44 0.12 150);
   --sky-star-core: oklch(0.99 0.012 100);
   --sky-star-trail: oklch(0.88 0.065 180);
   --sky-star-gold: oklch(0.88 0.12 88);
@@ -107,6 +112,11 @@
 }
 
 .dark {
+  --contribution-0: oklch(0.24 0.005 150);
+  --contribution-1: oklch(0.37 0.08 150);
+  --contribution-2: oklch(0.49 0.13 150);
+  --contribution-3: oklch(0.64 0.17 150);
+  --contribution-4: oklch(0.78 0.18 150);
   --background: oklch(0.129 0.042 264.695);
   --foreground: oklch(0.984 0.003 247.858);
   --card: oklch(0.208 0.042 265.755);
@@ -304,3 +314,16 @@ html body a[href^="https://lovable.dev/projects"] {
   .pr-marquee { overflow-x: auto; }
   .pr-marquee-track { animation: none; }
 }
+
+.github-calendar { display: flex; gap: 8px; min-width: 680px; }
+.github-calendar-weeks { display: flex; flex: 1; justify-content: space-between; gap: 2px; }
+.github-calendar-week { position: relative; display: flex; flex-direction: column; gap: 3px; padding-top: 22px; }
+.github-calendar-day { display: block; width: 10px; height: 10px; flex-shrink: 0; border-radius: 2px; }
+.github-calendar-day[href]:hover { outline: 1px solid var(--foreground); outline-offset: 1px; }
+.github-calendar-month { position: absolute; top: 0; left: 0; font-size: 10px; color: var(--muted-foreground); white-space: nowrap; }
+.github-calendar-labels { display: flex; flex-direction: column; gap: 12px; padding-top: 34px; width: 26px; flex-shrink: 0; font-size: 10px; line-height: 14px; color: var(--muted-foreground); }
+.github-level-0 { background: var(--contribution-0); }
+.github-level-1 { background: var(--contribution-1); }
+.github-level-2 { background: var(--contribution-2); }
+.github-level-3 { background: var(--contribution-3); }
+.github-level-4 { background: var(--contribution-4); }

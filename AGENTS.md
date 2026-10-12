@@ -13,3 +13,4 @@
 - Resolve semantic CSS color tokens through the browser before passing colors to Three.js; this keeps scene materials aligned with the design system.
 
 - Live GitHub PRs come from a cached server function calling the public GitHub search API (no token); the curated list stays as a fallback if GitHub is unavailable.
+- The GitHub heatmap uses a cached public contribution-calendar mirror through a server function, with validated daily counts and an unavailable state; this avoids credentials and fabricated activity.
