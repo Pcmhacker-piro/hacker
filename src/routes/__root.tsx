@@ -18,17 +18,17 @@ function NotFoundComponent() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
       <div className="max-w-md text-center">
-        <h1 className="text-7xl font-bold text-foreground">404</h1>
-        <h2 className="mt-4 text-xl font-semibold text-foreground">Page not found</h2>
-        <p className="mt-2 text-sm text-muted-foreground">
-          The page you're looking for doesn't exist or has been moved.
+        <p className="font-mono text-xs uppercase tracking-[0.3em] text-muted-foreground">Error 404</p>
+        <h1 className="text-gradient font-display mt-3 text-5xl font-extrabold tracking-tight">Lost in space</h1>
+        <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
+          This page drifted off the map. Let's get you back to Prakash's portfolio.
         </p>
-        <div className="mt-6">
-          <Link
-            to="/"
-            className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
-          >
-            Go home
+        <div className="mt-8 flex flex-wrap justify-center gap-2">
+          <Link to="/" className="inline-flex items-center justify-center rounded-full bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground shadow-elegant transition-all hover:-translate-y-0.5">
+            Back to home
+          </Link>
+          <Link to="/projects" className="inline-flex items-center justify-center rounded-full border border-border bg-card px-5 py-2.5 text-sm font-medium text-foreground transition-all hover:-translate-y-0.5 hover:border-primary/50">
+            See projects
           </Link>
         </div>
       </div>

@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { projects } from "@/lib/portfolio-data";
 import { BackButton } from "@/components/BackButton";
+import { GitHubHeatmap } from "@/components/GitHubHeatmap";
 import { ArrowUpRight, Github } from "lucide-react";
 
 export const Route = createFileRoute("/projects/")({
@@ -90,6 +91,10 @@ function ProjectsPage() {
               </div>
             </article>
           ))}
+        </div>
+
+        <div className="mt-12">
+          <GitHubHeatmap />
         </div>
 
         <div className="mt-12 rounded-2xl border border-border bg-card p-6 text-center shadow-elegant">
