@@ -67,7 +67,6 @@ export function GitHubHeatmap() {
     <div className="mb-5 border-y border-dashed border-border py-4">
       <div className="flex items-center justify-between gap-3 text-xs">
         <h3 className="flex items-center gap-2 font-medium"><Github className="h-3.5 w-3.5" />GitHub activity</h3>
-        <a href={PROFILE} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1 text-muted-foreground hover:text-foreground">@Pcmhacker-piro<ArrowUpRight className="h-3.5 w-3.5" /></a>
       </div>
       <Suspense fallback={<div className="mt-4 h-32 animate-pulse rounded-md bg-muted" role="status" aria-label="Loading GitHub activity" />}><Calendar /></Suspense>
     </div>
