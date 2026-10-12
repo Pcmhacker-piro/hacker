@@ -4,8 +4,8 @@ import verdiqyStory1 from "@/assets/verdiqy-story-1.png";
 import verdiqyStory2 from "@/assets/verdiqy-story-2.png";
 import novixStory1 from "@/assets/novix-story-1.png";
 import novixStory2 from "@/assets/novix-story-2.png";
-import inamigosLogo from "@/assets/inamigos-logo.png.asset.json";
-import eliteCodersLogo from "@/assets/elite-coders-logo.png.asset.json";
+import inamigosLogo from "@/assets/inamigos-logo.png";
+import eliteCodersLogo from "@/assets/elite-coders-logo.png";
 
 export const stats = [
   { v: "28th", l: "GSSoC 2026 global rank" },
@@ -50,7 +50,7 @@ export const experiences = [
     date: "Jul 2026 – Aug 2026",
     place: "Remote",
     mark: "IA",
-    logo: inamigosLogo.url,
+    logo: inamigosLogo,
     metrics: [
       { v: "6", l: "UX flows" },
       { v: "4", l: "Sections shipped" },
@@ -67,7 +67,7 @@ export const experiences = [
     date: "Jun 2026 – Aug 2026",
     place: "India · Remote",
     mark: "EC",
-    logo: eliteCodersLogo.url,
+    logo: eliteCodersLogo,
     metrics: [
       { v: "#286", l: "Worldwide rank" },
       { v: "620", l: "Leaderboard score" },
