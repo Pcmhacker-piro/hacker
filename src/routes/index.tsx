@@ -8,6 +8,7 @@ import { useEffect, useRef, useState } from "react";
 import type { MouseEvent as RMouseEvent } from "react";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { HeroBanner } from "@/components/HeroBanner";
+import { CopyEmailButton } from "@/components/CopyEmailButton";
 import { Reveal } from "@/components/Reveal";
 import { MessageForm } from "@/components/MessageForm";
 import { Github, Linkedin, Twitter, Mail, ChevronDown, ArrowUpRight, Command, Moon, Sun, Copy, Sparkles, Loader2 } from "lucide-react";
@@ -121,6 +122,7 @@ function Index() {
             </div>
             <div className="absolute right-0 top-3 flex items-center gap-1">
               <CommandPalette />
+              <CopyEmailButton />
               <ThemeToggle />
             </div>
           </div>
@@ -251,6 +253,7 @@ function Index() {
                   {s.label}
                 </a>
               ))}
+              <CopyEmailButton variant="full" className="w-full" />
             </div>
           </div>
         </section>
@@ -259,7 +262,7 @@ function Index() {
       <footer className="relative py-10 text-center text-xs text-muted-foreground">
         <div aria-hidden="true" className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
         <span className="text-gradient font-medium">© 2026 Prakash Meena</span>
-        <span className="mt-1 block text-[11px]">Designed & built with care · Dharwad, India</span>
+        <span className="mt-1 block text-[11px]">Built with React, TanStack Start & Tailwind CSS · Dharwad, India</span>
       </footer>
     </div>
   );
